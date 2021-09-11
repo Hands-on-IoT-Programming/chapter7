@@ -204,8 +204,8 @@
         "channel": "data_env",
         "cluster": "eu",
         "eventname": "env",
-        "x": 230,
-        "y": 260,
+        "x": 170,
+        "y": 220,
         "wires": [
             [
                 "3c167705.047788",
@@ -701,46 +701,14 @@
         "crontab": "",
         "once": true,
         "onceDelay": "5",
-        "x": 530,
-        "y": 100,
+        "x": 503,
+        "y": 203,
         "wires": [
             [
                 "704afeac.619a6",
-                "2683821c.8a590e",
-                "7bc2d823.2f27e8"
+                "2683821c.8a590e"
             ]
         ]
-    },
-    {
-        "id": "7bc2d823.2f27e8",
-        "type": "function",
-        "z": "b4e759db.21b158",
-        "name": "dotenv",
-        "func": "// All system enviroment variables\n//const process = global.get('process')\n//msg.payload = process.env\n\n// Only variable un node .env file\nconst env = global.get('dotenv').config()\nconsole.log(env)\nmsg.payload = env.parsed\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 790,
-        "y": 100,
-        "wires": [
-            [
-                "509921cd.653ca"
-            ]
-        ]
-    },
-    {
-        "id": "509921cd.653ca",
-        "type": "debug",
-        "z": "b4e759db.21b158",
-        "name": "ENV vars",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "x": 940,
-        "y": 100,
-        "wires": []
     },
     {
         "id": "2683821c.8a590e",
@@ -1026,8 +994,8 @@
         "console": false,
         "tostatus": false,
         "complete": "false",
-        "x": 350,
-        "y": 320,
+        "x": 330,
+        "y": 300,
         "wires": []
     },
     {
