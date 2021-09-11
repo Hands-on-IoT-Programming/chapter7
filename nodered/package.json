@@ -13,7 +13,6 @@
     "flow9": "FLOW=flow9 node node_modules/node-red/red.js --settings=./settings.js flows/flow9.json --port ${PORT:-2880}"
   },
   "dependencies": {
-    "dotenv": "^8.2.0",
     "node-red": "~1.0.4",
     "node-red-admin": "~0.1.5",
     "node-red-contrib-buffer-array": "~1.1.0",

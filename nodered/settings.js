@@ -32,7 +32,6 @@ module.exports = {
     // node-red from being able to decrypt your existing credentials and they will be
     // lost.
     credentialSecret: process.env.SECRETKEY,
-    //credentialSecret: "raspberry",
 
     // If not specified, data will be put in '$HOME/.node-red'
     userDir: `${process.cwd()}/flows`,
@@ -74,19 +73,9 @@ module.exports = {
     // Securing Node-RED
     // -----------------
     // To password protect the Node-RED editor and admin API, the following
-    // property can be used. See http://nodered.org/docs/security.html for details.
-    // Get hash for users setting the password with:
-    // ------------------------------------------------------------
-    // $ node node_modules/node-red-admin/node-red-admin.js hash-pw
-    // ------------------------------------------------------------
-    // The following sample has correponds to password 'raspberry'
+    // property can be used. See http://nodered.org/docs/security.html for details. 
     adminAuth: {
         type: "credentials",
-        /*users: [{
-            username: "admin",
-            password: '$2b$08$a3BqIzZBlX1ZZGymCPCeV.JNy0nEmyOIRdiN.hDjxXaHMzPk1Z/uO',
-            permissions: "*"
-        }],*/
         users: [{
             username: process.env.USERNAME,
             password: process.env.PASSWORD,
@@ -162,7 +151,6 @@ module.exports = {
     functionGlobalContext: {
         process: process,
         os: require('os'),
-        dotenv: require('dotenv')
     },
 
     // Context Storage
