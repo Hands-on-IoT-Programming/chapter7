@@ -1,4 +1,4 @@
-# chapter9-RemoteServer
+Code samples for Chapter 7 The IoT Software Package: Remote Server side
 
 ## NodeRED instance
 Code application for the instance of NodeRED to run in the remote server (Middleware Layer)
