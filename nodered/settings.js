@@ -34,7 +34,7 @@ module.exports = {
     credentialSecret: process.env.SECRETKEY,
 
     // If not specified, data will be put in '$HOME/.node-red'
-    userDir: `${process.cwd()}/flows`,
+    userDir: `${process.cwd()}/data`,
     
     // Node-RED scans the `nodes` directory in the install directory to find nodes.
     // The following property can be used to specify an additional directory to scan.

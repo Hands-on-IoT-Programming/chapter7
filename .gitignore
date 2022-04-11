@@ -1,3 +1,5 @@
+# User generated data
+data
 # Secrets
 .env
 # NodeRED files inside user data folder
