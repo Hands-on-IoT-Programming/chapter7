@@ -1,5 +1,6 @@
 # Secrets
 .env
+data
 # NodeRED files inside user data folder
 *.backup
 context
