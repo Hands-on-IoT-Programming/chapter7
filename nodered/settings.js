@@ -31,7 +31,7 @@ module.exports = {
     // Note: once you set this property, do not change it - doing so will prevent
     // node-red from being able to decrypt your existing credentials and they will be
     // lost.
-    credentialSecret: process.env.SECRETKEY,
+    credentialSecret: false,
 
     // If not specified, data will be put in '$HOME/.node-red'
     userDir: `${process.cwd()}/data`,
@@ -113,7 +113,7 @@ module.exports = {
     // The following property can be used to disable the editor. The admin API
     // is not affected by this option. To disable both the editor and the admin
     // API, use either the httpRoot or httpAdminRoot properties
-    disableEditor: (process.env.DISABLE_NODERED_EDITOR == 'true') || false,
+    disableEditor: false,
 
     // The following property can be used to configure cross-origin resource sharing
     // in the HTTP nodes.
@@ -174,11 +174,11 @@ module.exports = {
     //paletteCategories: ['subflows', 'input', 'output', 'function', 'social', 'mobile', 'storage', 'analysis', 'advanced'],
     editorTheme: {
         page: {
-            title: `Hands on IoT Programming - ${process.env.FLOW}`,
+            title: 'Hands on IoT Programming - Remote Server',
             favicon: "/usr/src/app/assets/favicon.ico"
         },
         header: {
-            title: `Hands on IoT Programming - ${process.env.FLOW}`,
+            title: 'Hands on IoT Programming - Remote Server',
             image: "assets/logo.png", // or null to remove image
             url: "https://github.com/Hands-on-IoT-Programming"
         },
