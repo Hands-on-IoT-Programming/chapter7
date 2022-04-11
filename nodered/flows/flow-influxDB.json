@@ -21,13 +21,6 @@
         "info": ""
     },
     {
-        "id": "b4e759db.21b158",
-        "type": "tab",
-        "label": "ENV",
-        "disabled": false,
-        "info": ""
-    },
-    {
         "id": "fee98c91.8a287",
         "type": "ui_base",
         "theme": {
@@ -686,89 +679,6 @@
         "wires": [
             [
                 "9cf08084.18e73"
-            ]
-        ]
-    },
-    {
-        "id": "cd014874.8f1ca8",
-        "type": "inject",
-        "z": "b4e759db.21b158",
-        "name": "",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": "5",
-        "x": 503,
-        "y": 203,
-        "wires": [
-            [
-                "704afeac.619a6",
-                "2683821c.8a590e"
-            ]
-        ]
-    },
-    {
-        "id": "2683821c.8a590e",
-        "type": "function",
-        "z": "b4e759db.21b158",
-        "name": "NodeRED credentials",
-        "func": "msg.payload = env.get(\"\")\n\nmsg.payload = {\n    username: env.get(\"USERNAME\"),\n    password: env.get(\"PASSWORD\"),\n    secret:   env.get(\"SECRETKEY\")\n}\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 740,
-        "y": 240,
-        "wires": [
-            [
-                "17f198c4.be0e87"
-            ]
-        ]
-    },
-    {
-        "id": "17f198c4.be0e87",
-        "type": "debug",
-        "z": "b4e759db.21b158",
-        "name": "NodeRED",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "x": 940,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "32538607.10b53a",
-        "type": "debug",
-        "z": "b4e759db.21b158",
-        "name": "Pusher",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "x": 940,
-        "y": 180,
-        "wires": []
-    },
-    {
-        "id": "704afeac.619a6",
-        "type": "function",
-        "z": "b4e759db.21b158",
-        "name": "Pusher credentials",
-        "func": "msg.payload = {\n    app_id:  env.get(\"APP_ID\") || 0,\n    key:     env.get(\"APP_KEY\"),\n    secret:  env.get(\"APP_SECRET\"),\n    cluster: env.get(\"APP_CLUSTER\")\n}\n    \nreturn msg;\n\n//$(APP_KEY)\n//$(APP_SECRET)\n//process.env.APP_KEY",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 750,
-        "y": 180,
-        "wires": [
-            [
-                "32538607.10b53a"
             ]
         ]
     },
