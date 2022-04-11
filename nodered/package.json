@@ -5,8 +5,8 @@
   "private": true,
   "main": "node_modules/node-red/red/red.js",
   "scripts": {
-    "start": "node node_modules/node-red/red.js --settings=./settings.js",
-    "flow9": "node node_modules/node-red/red.js --settings=./settings.js flows/flow9.json"
+    "jsonDB": "node node_modules/node-red/red.js --settings=./settings.js flows/flow-jsonDB.json",
+    "influxDB": "node node_modules/node-red/red.js --settings=./settings.js flows/flow-influxDB.json"
   },
   "dependencies": {
     "node-red": "~1.0.4",
