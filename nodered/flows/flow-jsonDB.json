@@ -255,7 +255,7 @@
         "z": "f8d118e1.ddd038",
         "name": "",
         "throttleType": "time",
-        "timeLimit": "2",
+        "timeLimit": "4",
         "timeLimitType": "seconds",
         "countLimit": 0,
         "blockSize": 0,
@@ -316,7 +316,7 @@
         "z": "f8d118e1.ddd038",
         "name": "",
         "throttleType": "time",
-        "timeLimit": "2",
+        "timeLimit": "4",
         "timeLimitType": "seconds",
         "countLimit": 0,
         "blockSize": 0,
@@ -359,7 +359,7 @@
         "z": "f8d118e1.ddd038",
         "name": "",
         "throttleType": "time",
-        "timeLimit": "2",
+        "timeLimit": "4",
         "timeLimitType": "seconds",
         "countLimit": 0,
         "blockSize": 0,
@@ -465,7 +465,7 @@
         "collection": "2559c8bb.5f9548",
         "name": "IN Instant Temperature",
         "update": true,
-        "path": "/temperature",
+        "path": "/temperature/raw",
         "x": 1220,
         "y": 400,
         "wires": []
@@ -476,7 +476,7 @@
         "z": "f8d118e1.ddd038",
         "name": "",
         "throttleType": "time",
-        "timeLimit": "2",
+        "timeLimit": "4",
         "timeLimitType": "seconds",
         "countLimit": 0,
         "blockSize": 0,
@@ -736,9 +736,9 @@
         "id": "2b66b541.4ead3a",
         "type": "comment",
         "z": "c6bff353.2ef968",
-        "name": "Temperature",
+        "name": "Temperature (raw, average, stdev)",
         "info": "",
-        "x": 330,
+        "x": 240,
         "y": 360,
         "wires": []
     },
@@ -748,7 +748,7 @@
         "z": "f8d118e1.ddd038",
         "name": "",
         "throttleType": "time",
-        "timeLimit": "2",
+        "timeLimit": "4",
         "timeLimitType": "seconds",
         "countLimit": 0,
         "blockSize": 0,
@@ -786,26 +786,6 @@
                 "8e82f2a9.148e5"
             ]
         ]
-    },
-    {
-        "id": "be2e2b19.ffd79",
-        "type": "comment",
-        "z": "c6bff353.2ef968",
-        "name": "Temperature  (mean)",
-        "info": "",
-        "x": 310,
-        "y": 440,
-        "wires": []
-    },
-    {
-        "id": "8f88927d.d91c6",
-        "type": "comment",
-        "z": "c6bff353.2ef968",
-        "name": "Temperature  (standard deviation)",
-        "info": "",
-        "x": 270,
-        "y": 520,
-        "wires": []
     },
     {
         "id": "48b517b7.0c18c",
@@ -850,7 +830,7 @@
         "collection": "2559c8bb.5f9548",
         "name": "IN Avg.Temperature",
         "update": true,
-        "path": "/temperature",
+        "path": "/temperature/mean",
         "x": 1220,
         "y": 480,
         "wires": []
@@ -878,7 +858,7 @@
         "collection": "2559c8bb.5f9548",
         "name": "IN Std. Temperature",
         "update": true,
-        "path": "/temperature",
+        "path": "/temperature/std",
         "x": 1210,
         "y": 560,
         "wires": []
