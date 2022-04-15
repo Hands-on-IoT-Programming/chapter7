@@ -178,7 +178,7 @@ module.exports = {
             favicon: "/usr/src/app/assets/favicon.ico"
         },
         header: {
-            title: 'Hands on IoT Programming - Remote Server',
+            title: 'Hands on IoT Programming - Storing time series in jsonDB',
             image: "assets/logo.png", // or null to remove image
             url: "https://github.com/Hands-on-IoT-Programming"
         },
