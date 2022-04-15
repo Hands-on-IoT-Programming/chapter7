@@ -147,17 +147,6 @@
         "height": 1
     },
     {
-        "id": "f3aaca43.eb9518",
-        "type": "ui_group",
-        "z": "",
-        "name": "Temperature Graph",
-        "tab": "cacb2438.d13638",
-        "order": 2,
-        "disp": true,
-        "width": "21",
-        "collapse": false
-    },
-    {
         "id": "cacb2438.d13638",
         "type": "ui_tab",
         "z": "",
@@ -271,10 +260,12 @@
         "countLimit": 0,
         "blockSize": 0,
         "locked": false,
-        "x": 710,
+        "x": 680,
         "y": 480,
         "wires": [
-            []
+            [
+                "b4d50b55.6249a"
+            ]
         ]
     },
     {
@@ -293,8 +284,7 @@
         "z": "f8d118e1.ddd038",
         "name": "IN- Store avg temperature",
         "links": [
-            "75dee813.4e1318",
-            "bbb5cef2.54b258"
+            "75dee813.4e1318"
         ],
         "x": 515,
         "y": 480,
@@ -491,7 +481,7 @@
         "countLimit": 0,
         "blockSize": 0,
         "locked": false,
-        "x": 690,
+        "x": 680,
         "y": 400,
         "wires": [
             [
@@ -510,8 +500,8 @@
         "tostatus": false,
         "complete": "payload[0]",
         "targetType": "msg",
-        "x": 1190,
-        "y": 460,
+        "x": 1210,
+        "y": 360,
         "wires": []
     },
     {
@@ -605,8 +595,7 @@
         "z": "f00a487a.95faf8",
         "name": "Store avg temperature",
         "links": [
-            "a10d3ee8.de1d1",
-            "992a4557.f084e8"
+            "a10d3ee8.de1d1"
         ],
         "x": 935,
         "y": 380,
@@ -664,9 +653,8 @@
         "id": "bbb5cef2.54b258",
         "type": "link out",
         "z": "f00a487a.95faf8",
-        "name": "Store avg temperature",
+        "name": "Store std temperature",
         "links": [
-            "a10d3ee8.de1d1",
             "992a4557.f084e8"
         ],
         "x": 935,
@@ -765,10 +753,12 @@
         "countLimit": 0,
         "blockSize": 0,
         "locked": false,
-        "x": 700,
+        "x": 680,
         "y": 560,
         "wires": [
-            []
+            [
+                "3aade36.b49949c"
+            ]
         ]
     },
     {
@@ -787,7 +777,6 @@
         "z": "f8d118e1.ddd038",
         "name": "IN- Store avg temperature",
         "links": [
-            "75dee813.4e1318",
             "bbb5cef2.54b258"
         ],
         "x": 515,
@@ -836,6 +825,62 @@
         "info": "",
         "x": 310,
         "y": 140,
+        "wires": []
+    },
+    {
+        "id": "b4d50b55.6249a",
+        "type": "function",
+        "z": "f8d118e1.ddd038",
+        "name": "Format and add timestamp",
+        "func": "const timestamp = new Date();\n\nmsg.payload = [{\n    timestamp:   timestamp.toString(),\n    temperature_avg: msg.payload\n    }];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 940,
+        "y": 480,
+        "wires": [
+            [
+                "aeedb40b.dd10d"
+            ]
+        ]
+    },
+    {
+        "id": "aeedb40b.dd10d",
+        "type": "DataIn",
+        "z": "f8d118e1.ddd038",
+        "collection": "2559c8bb.5f9548",
+        "name": "IN Avg.Temperature",
+        "update": true,
+        "path": "/temperature",
+        "x": 1220,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "3aade36.b49949c",
+        "type": "function",
+        "z": "f8d118e1.ddd038",
+        "name": "Format and add timestamp",
+        "func": "const timestamp = new Date();\n\nmsg.payload = [{\n    timestamp:   timestamp.toString(),\n    temperature_std: msg.payload\n    }];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 940,
+        "y": 560,
+        "wires": [
+            [
+                "310f1a99.6b4ff6"
+            ]
+        ]
+    },
+    {
+        "id": "310f1a99.6b4ff6",
+        "type": "DataIn",
+        "z": "f8d118e1.ddd038",
+        "collection": "2559c8bb.5f9548",
+        "name": "IN Std. Temperature",
+        "update": true,
+        "path": "/temperature",
+        "x": 1210,
+        "y": 560,
         "wires": []
     }
 ]
