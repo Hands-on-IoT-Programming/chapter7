@@ -676,10 +676,10 @@
         "type": "DataOut",
         "z": "c6bff353.2ef968",
         "collection": "2559c8bb.5f9548",
-        "name": "OUT Instant Temperature",
-        "path": "/temperature",
+        "name": "OUT raw Temperature",
+        "path": "/temperature/raw",
         "error": true,
-        "x": 730,
+        "x": 720,
         "y": 360,
         "wires": [
             [
