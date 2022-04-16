@@ -147,16 +147,6 @@
         "height": 1
     },
     {
-        "id": "cacb2438.d13638",
-        "type": "ui_tab",
-        "z": "",
-        "name": "Time series",
-        "icon": "dashboard",
-        "order": 1,
-        "disabled": false,
-        "hidden": false
-    },
-    {
         "id": "2559c8bb.5f9548",
         "type": "json-db-collection",
         "z": "",
@@ -691,14 +681,14 @@
         "id": "f9877461.76089",
         "type": "debug",
         "z": "c6bff353.2ef968",
-        "name": "Last write",
+        "name": "Last write of raw Temperature",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "msg.payload[-1]",
         "targetType": "jsonata",
-        "x": 950,
+        "x": 1020,
         "y": 360,
         "wires": []
     },
@@ -714,11 +704,13 @@
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
-        "x": 520,
-        "y": 360,
+        "x": 320,
+        "y": 300,
         "wires": [
             [
-                "40e35b45.aeedb4"
+                "40e35b45.aeedb4",
+                "10ad64.797b5a9d",
+                "464a3f7f.71e56"
             ]
         ]
     },
@@ -738,8 +730,8 @@
         "z": "c6bff353.2ef968",
         "name": "Temperature (raw, average, stdev)",
         "info": "",
-        "x": 240,
-        "y": 360,
+        "x": 340,
+        "y": 420,
         "wires": []
     },
     {
@@ -793,8 +785,8 @@
         "z": "c6bff353.2ef968",
         "name": "Humidity (raw data)",
         "info": "",
-        "x": 310,
-        "y": 240,
+        "x": 570,
+        "y": 200,
         "wires": []
     },
     {
@@ -803,8 +795,8 @@
         "z": "c6bff353.2ef968",
         "name": "Pressure (raw data)",
         "info": "",
-        "x": 310,
-        "y": 140,
+        "x": 570,
+        "y": 100,
         "wires": []
     },
     {
@@ -861,6 +853,68 @@
         "path": "/temperature/std",
         "x": 1210,
         "y": 560,
+        "wires": []
+    },
+    {
+        "id": "10ad64.797b5a9d",
+        "type": "DataOut",
+        "z": "c6bff353.2ef968",
+        "collection": "2559c8bb.5f9548",
+        "name": "OUT mean Temperature",
+        "path": "/temperature/mean",
+        "error": true,
+        "x": 730,
+        "y": 420,
+        "wires": [
+            [
+                "f8881e27.20f5f8"
+            ]
+        ]
+    },
+    {
+        "id": "f8881e27.20f5f8",
+        "type": "debug",
+        "z": "c6bff353.2ef968",
+        "name": "Last write of mean Temperature",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "msg.payload[-1]",
+        "targetType": "jsonata",
+        "x": 1020,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "464a3f7f.71e56",
+        "type": "DataOut",
+        "z": "c6bff353.2ef968",
+        "collection": "2559c8bb.5f9548",
+        "name": "OUT stdev Temperature",
+        "path": "/temperature/std",
+        "error": true,
+        "x": 730,
+        "y": 480,
+        "wires": [
+            [
+                "6a8927ab.dfd4e"
+            ]
+        ]
+    },
+    {
+        "id": "6a8927ab.dfd4e",
+        "type": "debug",
+        "z": "c6bff353.2ef968",
+        "name": "Last write of stdev Temperature",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "msg.payload[-1]",
+        "targetType": "jsonata",
+        "x": 1020,
+        "y": 480,
         "wires": []
     }
 ]
