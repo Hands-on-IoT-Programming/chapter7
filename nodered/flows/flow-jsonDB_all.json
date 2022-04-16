@@ -1,0 +1,1044 @@
+[
+    {
+        "id": "f00a487a.95faf8",
+        "type": "tab",
+        "label": "Data processing",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "f8d118e1.ddd038",
+        "type": "tab",
+        "label": "Store data",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "c6bff353.2ef968",
+        "type": "tab",
+        "label": "Read data",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "fee98c91.8a287",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "1071f503.257ceb",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Sense Hat",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "f315fd49.2b923",
+        "type": "ui_group",
+        "z": "",
+        "name": "Statistics",
+        "tab": "1071f503.257ceb",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "42a92da.f061dd4",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "f315fd49.2b923",
+        "order": 4,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "2559c8bb.5f9548",
+        "type": "json-db-collection",
+        "z": "",
+        "name": "environment",
+        "collection": "environment",
+        "save": true
+    },
+    {
+        "id": "bb270b26.18d878",
+        "type": "pusher in",
+        "z": "f00a487a.95faf8",
+        "name": "Pusher",
+        "channel": "data_env",
+        "cluster": "eu",
+        "eventname": "env",
+        "x": 170,
+        "y": 220,
+        "wires": [
+            [
+                "3c167705.047788",
+                "2f3f528a.711dce",
+                "3fe17a43.53da76"
+            ]
+        ]
+    },
+    {
+        "id": "3c167705.047788",
+        "type": "change",
+        "z": "f00a487a.95faf8",
+        "name": "temperature",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.temperature",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 370,
+        "y": 280,
+        "wires": [
+            [
+                "1356e68.0112c1a",
+                "12c13b1e.ff04b5",
+                "16f621c6.5c6aee"
+            ]
+        ]
+    },
+    {
+        "id": "1356e68.0112c1a",
+        "type": "link out",
+        "z": "f00a487a.95faf8",
+        "name": "Store temperature",
+        "links": [
+            "6c7005d6.b64d5c"
+        ],
+        "x": 835,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "6c7005d6.b64d5c",
+        "type": "link in",
+        "z": "f8d118e1.ddd038",
+        "name": "IN-Store temperature",
+        "links": [
+            "1356e68.0112c1a"
+        ],
+        "x": 515,
+        "y": 400,
+        "wires": [
+            [
+                "30fc2f13.04c6c"
+            ]
+        ]
+    },
+    {
+        "id": "53f449eb.786eb8",
+        "type": "comment",
+        "z": "f8d118e1.ddd038",
+        "name": "Temperature (raw data)",
+        "info": "",
+        "x": 380,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "9cf08084.18e73",
+        "type": "throttle",
+        "z": "f8d118e1.ddd038",
+        "name": "",
+        "throttleType": "time",
+        "timeLimit": "4",
+        "timeLimitType": "seconds",
+        "countLimit": 0,
+        "blockSize": 0,
+        "locked": false,
+        "x": 680,
+        "y": 480,
+        "wires": [
+            [
+                "b4d50b55.6249a"
+            ]
+        ]
+    },
+    {
+        "id": "8c777fd6.34859",
+        "type": "comment",
+        "z": "f8d118e1.ddd038",
+        "name": "Temperature  (mean)",
+        "info": "",
+        "x": 390,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "a10d3ee8.de1d1",
+        "type": "link in",
+        "z": "f8d118e1.ddd038",
+        "name": "IN- Store avg temperature",
+        "links": [
+            "75dee813.4e1318"
+        ],
+        "x": 515,
+        "y": 480,
+        "wires": [
+            [
+                "9cf08084.18e73"
+            ]
+        ]
+    },
+    {
+        "id": "e1da4835.94b578",
+        "type": "link in",
+        "z": "f8d118e1.ddd038",
+        "name": "IN-Store humidity",
+        "links": [
+            "42d5d5af.ca479c"
+        ],
+        "x": 515,
+        "y": 200,
+        "wires": [
+            [
+                "8759ead6.64c9f8"
+            ]
+        ]
+    },
+    {
+        "id": "8759ead6.64c9f8",
+        "type": "throttle",
+        "z": "f8d118e1.ddd038",
+        "name": "",
+        "throttleType": "time",
+        "timeLimit": "4",
+        "timeLimitType": "seconds",
+        "countLimit": 0,
+        "blockSize": 0,
+        "locked": false,
+        "x": 690,
+        "y": 200,
+        "wires": [
+            [
+                "e75a2fbe.041bf"
+            ]
+        ]
+    },
+    {
+        "id": "f4efaac5.2fb3d8",
+        "type": "comment",
+        "z": "f8d118e1.ddd038",
+        "name": "Humidity (raw data)",
+        "info": "",
+        "x": 390,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "ba467ef2.eb1",
+        "type": "link in",
+        "z": "f8d118e1.ddd038",
+        "name": "IN-Store pressure",
+        "links": [
+            "444f01f.56317"
+        ],
+        "x": 515,
+        "y": 100,
+        "wires": [
+            [
+                "b4e9441f.69a108"
+            ]
+        ]
+    },
+    {
+        "id": "b4e9441f.69a108",
+        "type": "throttle",
+        "z": "f8d118e1.ddd038",
+        "name": "",
+        "throttleType": "time",
+        "timeLimit": "4",
+        "timeLimitType": "seconds",
+        "countLimit": 0,
+        "blockSize": 0,
+        "locked": false,
+        "x": 690,
+        "y": 100,
+        "wires": [
+            [
+                "9e74c3ae.1befd8"
+            ]
+        ]
+    },
+    {
+        "id": "b9e920ba.97a7b",
+        "type": "comment",
+        "z": "f8d118e1.ddd038",
+        "name": "Pressure (raw data)",
+        "info": "",
+        "x": 390,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "2f3f528a.711dce",
+        "type": "change",
+        "z": "f00a487a.95faf8",
+        "name": "humidity",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.humidity",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 180,
+        "wires": [
+            [
+                "42d5d5af.ca479c"
+            ]
+        ]
+    },
+    {
+        "id": "3fe17a43.53da76",
+        "type": "change",
+        "z": "f00a487a.95faf8",
+        "name": "pressure",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.pressure",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 80,
+        "wires": [
+            [
+                "444f01f.56317"
+            ]
+        ]
+    },
+    {
+        "id": "42d5d5af.ca479c",
+        "type": "link out",
+        "z": "f00a487a.95faf8",
+        "name": "Store humidity",
+        "links": [
+            "e1da4835.94b578"
+        ],
+        "x": 835,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "444f01f.56317",
+        "type": "link out",
+        "z": "f00a487a.95faf8",
+        "name": "Store pressure",
+        "links": [
+            "ba467ef2.eb1"
+        ],
+        "x": 835,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "9cbf5a06.3d8f88",
+        "type": "DataIn",
+        "z": "f8d118e1.ddd038",
+        "collection": "2559c8bb.5f9548",
+        "name": "IN Instant Temperature",
+        "update": true,
+        "path": "/temperature/raw",
+        "x": 1220,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "30fc2f13.04c6c",
+        "type": "throttle",
+        "z": "f8d118e1.ddd038",
+        "name": "",
+        "throttleType": "time",
+        "timeLimit": "4",
+        "timeLimitType": "seconds",
+        "countLimit": 0,
+        "blockSize": 0,
+        "locked": false,
+        "x": 680,
+        "y": 400,
+        "wires": [
+            [
+                "7be43f8a.9c5ed"
+            ]
+        ]
+    },
+    {
+        "id": "8e146e45.20868",
+        "type": "debug",
+        "z": "f8d118e1.ddd038",
+        "name": "Current write",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload[0]",
+        "targetType": "msg",
+        "x": 1210,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "7be43f8a.9c5ed",
+        "type": "function",
+        "z": "f8d118e1.ddd038",
+        "name": "Format and add timestamp",
+        "func": "const timestamp = new Date();\n\nmsg.payload = [{\n    timestamp:   timestamp.toString(),\n    temperature: msg.payload\n    }];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 940,
+        "y": 400,
+        "wires": [
+            [
+                "8e146e45.20868",
+                "9cbf5a06.3d8f88"
+            ]
+        ]
+    },
+    {
+        "id": "2402d533.b9ad9a",
+        "type": "comment",
+        "z": "f00a487a.95faf8",
+        "name": "Pressure (raw data)",
+        "info": "",
+        "x": 910,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "f8766cea.6def08",
+        "type": "comment",
+        "z": "f00a487a.95faf8",
+        "name": "Humidity (raw data)",
+        "info": "",
+        "x": 910,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "4c070b26.36ac94",
+        "type": "comment",
+        "z": "f00a487a.95faf8",
+        "name": "Temperature (raw data)",
+        "info": "",
+        "x": 920,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "12c13b1e.ff04b5",
+        "type": "function",
+        "z": "f00a487a.95faf8",
+        "name": "mean",
+        "func": "msg.topic=\"mean\"\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 510,
+        "y": 380,
+        "wires": [
+            [
+                "dee2f3d8.d5e29"
+            ]
+        ]
+    },
+    {
+        "id": "dee2f3d8.d5e29",
+        "type": "statistics",
+        "z": "f00a487a.95faf8",
+        "name": "statistics over 10",
+        "dataSetSize": "10",
+        "inputField": "payload",
+        "inputFieldType": "msg",
+        "resultField": "payload",
+        "resultFieldType": "msg",
+        "parameterField": "",
+        "parameterFieldType": "msg",
+        "stripFunction": false,
+        "resultOnly": true,
+        "x": 790,
+        "y": 380,
+        "wires": [
+            [
+                "75dee813.4e1318"
+            ]
+        ]
+    },
+    {
+        "id": "75dee813.4e1318",
+        "type": "link out",
+        "z": "f00a487a.95faf8",
+        "name": "Store avg temperature",
+        "links": [
+            "a10d3ee8.de1d1"
+        ],
+        "x": 935,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "43d13e2a.3a0bc",
+        "type": "comment",
+        "z": "f00a487a.95faf8",
+        "name": "Temperature  (mean)",
+        "info": "",
+        "x": 1010,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "16f621c6.5c6aee",
+        "type": "function",
+        "z": "f00a487a.95faf8",
+        "name": "standardDeviation",
+        "func": "msg.topic=\"standardDeviation\"\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 550,
+        "y": 480,
+        "wires": [
+            [
+                "af35f1da.61f24"
+            ]
+        ]
+    },
+    {
+        "id": "af35f1da.61f24",
+        "type": "statistics",
+        "z": "f00a487a.95faf8",
+        "name": "statistics over 10",
+        "dataSetSize": "10",
+        "inputField": "payload",
+        "inputFieldType": "msg",
+        "resultField": "payload",
+        "resultFieldType": "msg",
+        "parameterField": "",
+        "parameterFieldType": "msg",
+        "stripFunction": false,
+        "resultOnly": true,
+        "x": 790,
+        "y": 480,
+        "wires": [
+            [
+                "bbb5cef2.54b258"
+            ]
+        ]
+    },
+    {
+        "id": "bbb5cef2.54b258",
+        "type": "link out",
+        "z": "f00a487a.95faf8",
+        "name": "Store std temperature",
+        "links": [
+            "992a4557.f084e8"
+        ],
+        "x": 935,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "4507d64b.d499a8",
+        "type": "comment",
+        "z": "f00a487a.95faf8",
+        "name": "Temperature  (standard deviation)",
+        "info": "",
+        "x": 1050,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "40e35b45.aeedb4",
+        "type": "DataOut",
+        "z": "c6bff353.2ef968",
+        "collection": "2559c8bb.5f9548",
+        "name": "OUT raw Temperature",
+        "path": "/temperature/raw",
+        "error": true,
+        "x": 720,
+        "y": 360,
+        "wires": [
+            [
+                "f9877461.76089"
+            ]
+        ]
+    },
+    {
+        "id": "f9877461.76089",
+        "type": "debug",
+        "z": "c6bff353.2ef968",
+        "name": "Last write of raw Temperature",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "msg.payload[-1]",
+        "targetType": "jsonata",
+        "x": 1020,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "14b87ec9.4afc29",
+        "type": "inject",
+        "z": "c6bff353.2ef968",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 320,
+        "y": 300,
+        "wires": [
+            [
+                "40e35b45.aeedb4",
+                "10ad64.797b5a9d",
+                "464a3f7f.71e56",
+                "91995ad0.92617",
+                "dff917f.9cccbe8"
+            ]
+        ]
+    },
+    {
+        "id": "ea991f45.b5c078",
+        "type": "comment",
+        "z": "c6bff353.2ef968",
+        "name": "Access data in jsonDB, on demand",
+        "info": "",
+        "x": 160,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "2b66b541.4ead3a",
+        "type": "comment",
+        "z": "c6bff353.2ef968",
+        "name": "Temperature (raw, average, stdev)",
+        "info": "",
+        "x": 340,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "8e82f2a9.148e5",
+        "type": "throttle",
+        "z": "f8d118e1.ddd038",
+        "name": "",
+        "throttleType": "time",
+        "timeLimit": "4",
+        "timeLimitType": "seconds",
+        "countLimit": 0,
+        "blockSize": 0,
+        "locked": false,
+        "x": 680,
+        "y": 560,
+        "wires": [
+            [
+                "3aade36.b49949c"
+            ]
+        ]
+    },
+    {
+        "id": "833688c5.143d18",
+        "type": "comment",
+        "z": "f8d118e1.ddd038",
+        "name": "Temperature  (standard deviation)",
+        "info": "",
+        "x": 350,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "992a4557.f084e8",
+        "type": "link in",
+        "z": "f8d118e1.ddd038",
+        "name": "IN- Store avg temperature",
+        "links": [
+            "bbb5cef2.54b258"
+        ],
+        "x": 515,
+        "y": 560,
+        "wires": [
+            [
+                "8e82f2a9.148e5"
+            ]
+        ]
+    },
+    {
+        "id": "48b517b7.0c18c",
+        "type": "comment",
+        "z": "c6bff353.2ef968",
+        "name": "Humidity (raw data)",
+        "info": "",
+        "x": 570,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "f9be94e8.7aa",
+        "type": "comment",
+        "z": "c6bff353.2ef968",
+        "name": "Pressure (raw data)",
+        "info": "",
+        "x": 570,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "b4d50b55.6249a",
+        "type": "function",
+        "z": "f8d118e1.ddd038",
+        "name": "Format and add timestamp",
+        "func": "const timestamp = new Date();\n\nmsg.payload = [{\n    timestamp:   timestamp.toString(),\n    temperature_avg: msg.payload\n    }];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 940,
+        "y": 480,
+        "wires": [
+            [
+                "aeedb40b.dd10d"
+            ]
+        ]
+    },
+    {
+        "id": "aeedb40b.dd10d",
+        "type": "DataIn",
+        "z": "f8d118e1.ddd038",
+        "collection": "2559c8bb.5f9548",
+        "name": "IN Avg.Temperature",
+        "update": true,
+        "path": "/temperature/mean",
+        "x": 1220,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "3aade36.b49949c",
+        "type": "function",
+        "z": "f8d118e1.ddd038",
+        "name": "Format and add timestamp",
+        "func": "const timestamp = new Date();\n\nmsg.payload = [{\n    timestamp:   timestamp.toString(),\n    temperature_std: msg.payload\n    }];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 940,
+        "y": 560,
+        "wires": [
+            [
+                "310f1a99.6b4ff6"
+            ]
+        ]
+    },
+    {
+        "id": "310f1a99.6b4ff6",
+        "type": "DataIn",
+        "z": "f8d118e1.ddd038",
+        "collection": "2559c8bb.5f9548",
+        "name": "IN Std. Temperature",
+        "update": true,
+        "path": "/temperature/std",
+        "x": 1210,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "10ad64.797b5a9d",
+        "type": "DataOut",
+        "z": "c6bff353.2ef968",
+        "collection": "2559c8bb.5f9548",
+        "name": "OUT mean Temperature",
+        "path": "/temperature/mean",
+        "error": true,
+        "x": 730,
+        "y": 420,
+        "wires": [
+            [
+                "f8881e27.20f5f8"
+            ]
+        ]
+    },
+    {
+        "id": "f8881e27.20f5f8",
+        "type": "debug",
+        "z": "c6bff353.2ef968",
+        "name": "Last write of mean Temperature",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "msg.payload[-1]",
+        "targetType": "jsonata",
+        "x": 1020,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "464a3f7f.71e56",
+        "type": "DataOut",
+        "z": "c6bff353.2ef968",
+        "collection": "2559c8bb.5f9548",
+        "name": "OUT stdev Temperature",
+        "path": "/temperature/std",
+        "error": true,
+        "x": 730,
+        "y": 480,
+        "wires": [
+            [
+                "6a8927ab.dfd4e"
+            ]
+        ]
+    },
+    {
+        "id": "6a8927ab.dfd4e",
+        "type": "debug",
+        "z": "c6bff353.2ef968",
+        "name": "Last write of stdev Temperature",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "msg.payload[-1]",
+        "targetType": "jsonata",
+        "x": 1020,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "e08a962f.9871e",
+        "type": "DataIn",
+        "z": "f8d118e1.ddd038",
+        "collection": "2559c8bb.5f9548",
+        "name": "IN Instant Humidity",
+        "update": true,
+        "path": "/humidity/raw",
+        "x": 1190,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "e75a2fbe.041bf",
+        "type": "function",
+        "z": "f8d118e1.ddd038",
+        "name": "Format and add timestamp",
+        "func": "const timestamp = new Date();\n\nmsg.payload = [{\n    timestamp:   timestamp.toString(),\n    humidity: msg.payload\n    }];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 930,
+        "y": 200,
+        "wires": [
+            [
+                "e08a962f.9871e"
+            ]
+        ]
+    },
+    {
+        "id": "1ff3bd6c.a8d86b",
+        "type": "DataIn",
+        "z": "f8d118e1.ddd038",
+        "collection": "2559c8bb.5f9548",
+        "name": "IN Instant Pressure",
+        "update": true,
+        "path": "/pressure/raw",
+        "x": 1200,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "9e74c3ae.1befd8",
+        "type": "function",
+        "z": "f8d118e1.ddd038",
+        "name": "Format and add timestamp",
+        "func": "const timestamp = new Date();\n\nmsg.payload = [{\n    timestamp:   timestamp.toString(),\n    pressure: msg.payload\n    }];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 930,
+        "y": 100,
+        "wires": [
+            [
+                "1ff3bd6c.a8d86b"
+            ]
+        ]
+    },
+    {
+        "id": "dff917f.9cccbe8",
+        "type": "DataOut",
+        "z": "c6bff353.2ef968",
+        "collection": "2559c8bb.5f9548",
+        "name": "OUT raw Pressure",
+        "path": "/pressure/raw",
+        "error": true,
+        "x": 710,
+        "y": 140,
+        "wires": [
+            [
+                "6aa9a6c4.15e118"
+            ]
+        ]
+    },
+    {
+        "id": "6aa9a6c4.15e118",
+        "type": "debug",
+        "z": "c6bff353.2ef968",
+        "name": "Last write of raw Pressure",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "msg.payload[-1]",
+        "targetType": "jsonata",
+        "x": 1010,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "91995ad0.92617",
+        "type": "DataOut",
+        "z": "c6bff353.2ef968",
+        "collection": "2559c8bb.5f9548",
+        "name": "OUT raw Humidity",
+        "path": "/humidity/raw",
+        "error": true,
+        "x": 710,
+        "y": 240,
+        "wires": [
+            [
+                "9aa1c601.7340f"
+            ]
+        ]
+    },
+    {
+        "id": "9aa1c601.7340f",
+        "type": "debug",
+        "z": "c6bff353.2ef968",
+        "name": "Last write of raw Humidity",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "msg.payload[-1]",
+        "targetType": "jsonata",
+        "x": 1010,
+        "y": 240,
+        "wires": []
+    }
+]
