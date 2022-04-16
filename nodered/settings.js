@@ -19,7 +19,7 @@ module.exports = {
     debugMaxLength: 1000,
 
     // The file containing the flows. If not set, it defaults to flows_<hostname>.json
-    flowFile: 'flows/your_flows.json',
+    flowFile: 'your_flows.json',
 
     // To enabled pretty-printing of the flow within the flow file, set the following
     //  property to true:
@@ -34,7 +34,7 @@ module.exports = {
     credentialSecret: false,
 
     // If not specified, data will be put in '$HOME/.node-red'
-    userDir: `${process.cwd()}/data`,
+    userDir: `${process.cwd()}/flows/data`,
     
     // Node-RED scans the `nodes` directory in the install directory to find nodes.
     // The following property can be used to specify an additional directory to scan.

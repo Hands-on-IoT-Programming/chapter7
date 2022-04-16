@@ -1,6 +1,7 @@
 # Secrets
 .env
-data
+context
+jsonDB
 # NodeRED files inside user data folder
 *.backup
 context
@@ -8,7 +9,7 @@ JsonDB
 lib
 .config.json
 .sessions.json
-flows/package.json
+package.json
 
 # Logs
 logs
