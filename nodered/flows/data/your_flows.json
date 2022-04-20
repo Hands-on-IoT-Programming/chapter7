@@ -136,8 +136,8 @@
         "id": "2559c8bb.5f9548",
         "type": "json-db-collection",
         "z": "",
-        "name": "temperature",
-        "collection": "temperature",
+        "name": "temperature_simple",
+        "collection": "temperature_simple",
         "save": true
     },
     {
