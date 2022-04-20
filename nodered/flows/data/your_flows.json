@@ -1,0 +1,353 @@
+[
+    {
+        "id": "f00a487a.95faf8",
+        "type": "tab",
+        "label": "Data processing",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "fee98c91.8a287",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "1071f503.257ceb",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Sense Hat",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "f315fd49.2b923",
+        "type": "ui_group",
+        "z": "",
+        "name": "Statistics",
+        "tab": "1071f503.257ceb",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "42a92da.f061dd4",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "f315fd49.2b923",
+        "order": 4,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "2559c8bb.5f9548",
+        "type": "json-db-collection",
+        "z": "",
+        "name": "temperature",
+        "collection": "temperature",
+        "save": true
+    },
+    {
+        "id": "bb270b26.18d878",
+        "type": "pusher in",
+        "z": "f00a487a.95faf8",
+        "name": "Sense Hat",
+        "channel": "data_env",
+        "cluster": "eu",
+        "eventname": "env",
+        "x": 400,
+        "y": 420,
+        "wires": [
+            [
+                "3c167705.047788"
+            ]
+        ]
+    },
+    {
+        "id": "3c167705.047788",
+        "type": "change",
+        "z": "f00a487a.95faf8",
+        "name": "temperature",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.temperature",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 590,
+        "y": 420,
+        "wires": [
+            [
+                "53bdf7b3.04bbf8"
+            ]
+        ]
+    },
+    {
+        "id": "7c082a33.1656cc",
+        "type": "pusher in",
+        "z": "f00a487a.95faf8",
+        "name": "ruido",
+        "channel": "data_env",
+        "cluster": "eu",
+        "eventname": "ruido",
+        "x": 390,
+        "y": 260,
+        "wires": [
+            [
+                "b9b8db6a.e903"
+            ]
+        ]
+    },
+    {
+        "id": "b9b8db6a.e903",
+        "type": "debug",
+        "z": "f00a487a.95faf8",
+        "name": "RUIDO",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 560,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "364c0393.fd0f1c",
+        "type": "comment",
+        "z": "f00a487a.95faf8",
+        "name": "CANAL A Topic 1",
+        "info": "",
+        "x": 210,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "b3efc52d.6661b",
+        "type": "DataIn",
+        "z": "f00a487a.95faf8",
+        "collection": "2559c8bb.5f9548",
+        "name": "IN Instant Temperature",
+        "update": true,
+        "path": "/temperature/raw",
+        "x": 1150,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "96ffe7a.f731598",
+        "type": "debug",
+        "z": "f00a487a.95faf8",
+        "name": "Current write",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload[0]",
+        "targetType": "msg",
+        "x": 1140,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "53bdf7b3.04bbf8",
+        "type": "function",
+        "z": "f00a487a.95faf8",
+        "name": "Format and add timestamp",
+        "func": "const timestamp = new Date();\n\nmsg.payload = [{\n    timestamp:   timestamp.toString(),\n    temperature: msg.payload\n    }];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 870,
+        "y": 420,
+        "wires": [
+            [
+                "96ffe7a.f731598",
+                "b3efc52d.6661b"
+            ]
+        ]
+    },
+    {
+        "id": "130a4d09.bea0b3",
+        "type": "comment",
+        "z": "f00a487a.95faf8",
+        "name": "CANAL A Topic 2",
+        "info": "",
+        "x": 210,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "c8d53d9c.70834",
+        "type": "comment",
+        "z": "f00a487a.95faf8",
+        "name": "CANAL B (otro dispositivo)",
+        "info": "",
+        "x": 240,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "3e18ccdb.e31984",
+        "type": "comment",
+        "z": "f00a487a.95faf8",
+        "name": "...",
+        "info": "",
+        "x": 470,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "e1d58171.395558",
+        "type": "pusher out",
+        "z": "f00a487a.95faf8",
+        "name": "",
+        "channel": "data_env",
+        "cluster": "eu",
+        "eventname": "ruido",
+        "x": 740,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "450e47bf.a9b84",
+        "type": "inject",
+        "z": "f00a487a.95faf8",
+        "name": "",
+        "topic": "",
+        "payload": "estoy distorsionando los datos",
+        "payloadType": "str",
+        "repeat": "2",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "x": 470,
+        "y": 140,
+        "wires": [
+            [
+                "e1d58171.395558"
+            ]
+        ]
+    },
+    {
+        "id": "32640bee.fddd84",
+        "type": "comment",
+        "z": "f00a487a.95faf8",
+        "name": "Publicación de señal de ruido",
+        "info": "",
+        "x": 200,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "29c956c7.93d902",
+        "type": "comment",
+        "z": "f00a487a.95faf8",
+        "name": "viene de Raspberry Pi",
+        "info": "",
+        "x": 420,
+        "y": 460,
+        "wires": []
+    }
+]
