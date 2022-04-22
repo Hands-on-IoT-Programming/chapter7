@@ -176,7 +176,8 @@
         "database": "environment",
         "name": "Environment Database",
         "usetls": false,
-        "tls": ""
+        "tls": "",
+        "influxdbVersion": "1.x"
     },
     {
         "id": "e221cd11.84b39",
@@ -187,7 +188,8 @@
         "database": "environment",
         "name": "Environment Database",
         "usetls": false,
-        "tls": ""
+        "tls": "",
+        "influxdbVersion": "1.x"
     },
     {
         "id": "bb270b26.18d878",
