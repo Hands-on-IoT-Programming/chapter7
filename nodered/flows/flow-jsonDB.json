@@ -9,7 +9,7 @@
     {
         "id": "f8d118e1.ddd038",
         "type": "tab",
-        "label": "Store data",
+        "label": "Store data in JsonDB",
         "disabled": false,
         "info": ""
     },

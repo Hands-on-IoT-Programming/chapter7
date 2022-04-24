@@ -9,7 +9,7 @@
     {
         "id": "f8d118e1.ddd038",
         "type": "tab",
-        "label": "Store aggregated data",
+        "label": "Store data in InfluxDB",
         "disabled": false,
         "info": ""
     },
