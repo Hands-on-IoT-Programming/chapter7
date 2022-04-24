@@ -1,0 +1,1113 @@
+[
+    {
+        "id": "f00a487a.95faf8",
+        "type": "tab",
+        "label": "Data processing",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "f8d118e1.ddd038",
+        "type": "tab",
+        "label": "Store aggregated data",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "9efb5a08.45beb8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "fee98c91.8a287",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "1071f503.257ceb",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Sense Hat",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "f315fd49.2b923",
+        "type": "ui_group",
+        "z": "",
+        "name": "Statistics",
+        "tab": "1071f503.257ceb",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "42a92da.f061dd4",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "f315fd49.2b923",
+        "order": 4,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "f3aaca43.eb9518",
+        "type": "ui_group",
+        "z": "",
+        "name": "Temperature Graph",
+        "tab": "cacb2438.d13638",
+        "order": 2,
+        "disp": true,
+        "width": "21",
+        "collapse": false
+    },
+    {
+        "id": "cacb2438.d13638",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Time series",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "2559c8bb.5f9548",
+        "type": "json-db-collection",
+        "z": "",
+        "name": "temperature",
+        "collection": "instant-temperature",
+        "save": true
+    },
+    {
+        "id": "bb270b26.18d878",
+        "type": "pusher in",
+        "z": "f00a487a.95faf8",
+        "name": "Pusher",
+        "channel": "data_env",
+        "cluster": "eu",
+        "eventname": "env",
+        "x": 170,
+        "y": 220,
+        "wires": [
+            [
+                "3c167705.047788",
+                "2f3f528a.711dce",
+                "3fe17a43.53da76"
+            ]
+        ]
+    },
+    {
+        "id": "16f621c6.5c6aee",
+        "type": "function",
+        "z": "f00a487a.95faf8",
+        "name": "standardDeviation",
+        "func": "msg.topic=\"standardDeviation\"\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 390,
+        "y": 560,
+        "wires": [
+            [
+                "af35f1da.61f24"
+            ]
+        ]
+    },
+    {
+        "id": "12c13b1e.ff04b5",
+        "type": "function",
+        "z": "f00a487a.95faf8",
+        "name": "mean",
+        "func": "msg.topic=\"mean\"\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 350,
+        "y": 620,
+        "wires": [
+            [
+                "dee2f3d8.d5e29"
+            ]
+        ]
+    },
+    {
+        "id": "dee2f3d8.d5e29",
+        "type": "statistics",
+        "z": "f00a487a.95faf8",
+        "name": "statistics over 10",
+        "dataSetSize": "10",
+        "inputField": "payload",
+        "inputFieldType": "msg",
+        "resultField": "payload",
+        "resultFieldType": "msg",
+        "parameterField": "",
+        "parameterFieldType": "msg",
+        "stripFunction": false,
+        "resultOnly": true,
+        "x": 610,
+        "y": 620,
+        "wires": [
+            [
+                "616f042b.87437c",
+                "75dee813.4e1318",
+                "d3039eec.02d7d"
+            ]
+        ]
+    },
+    {
+        "id": "616f042b.87437c",
+        "type": "debug",
+        "z": "f00a487a.95faf8",
+        "name": "AVERAGE temperature (last 10)",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 570,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "3c167705.047788",
+        "type": "change",
+        "z": "f00a487a.95faf8",
+        "name": "temperature",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.temperature",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 510,
+        "y": 280,
+        "wires": [
+            [
+                "da94596a.0d2188",
+                "f39c6034.25feb",
+                "1356e68.0112c1a"
+            ]
+        ]
+    },
+    {
+        "id": "da94596a.0d2188",
+        "type": "buffer-array",
+        "z": "f00a487a.95faf8",
+        "name": "",
+        "bufferLen": "10",
+        "startWhenFilled": false,
+        "x": 170,
+        "y": 600,
+        "wires": [
+            [
+                "12c13b1e.ff04b5",
+                "16f621c6.5c6aee"
+            ]
+        ]
+    },
+    {
+        "id": "6a02ae7b.f102",
+        "type": "debug",
+        "z": "f00a487a.95faf8",
+        "name": "STANDARD DEV temperature (last 10)",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 570,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "af35f1da.61f24",
+        "type": "statistics",
+        "z": "f00a487a.95faf8",
+        "name": "statistics over 10",
+        "dataSetSize": "10",
+        "inputField": "payload",
+        "inputFieldType": "msg",
+        "resultField": "payload",
+        "resultFieldType": "msg",
+        "parameterField": "",
+        "parameterFieldType": "msg",
+        "stripFunction": false,
+        "resultOnly": true,
+        "x": 610,
+        "y": 560,
+        "wires": [
+            [
+                "6a02ae7b.f102",
+                "47ac34bd.0f964c"
+            ]
+        ]
+    },
+    {
+        "id": "f39c6034.25feb",
+        "type": "function",
+        "z": "f00a487a.95faf8",
+        "name": "Instant temperature",
+        "func": "// msg output for graphing instant data\nmsg1 = {payload: msg.payload, topic: 'Instant read'};\nreturn [msg1];",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 870,
+        "y": 440,
+        "wires": [
+            [
+                "62adcdca.2488b4"
+            ]
+        ]
+    },
+    {
+        "id": "1356e68.0112c1a",
+        "type": "link out",
+        "z": "f00a487a.95faf8",
+        "name": "Store temperature",
+        "links": [
+            "6c7005d6.b64d5c"
+        ],
+        "x": 835,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "6c7005d6.b64d5c",
+        "type": "link in",
+        "z": "f8d118e1.ddd038",
+        "name": "IN-Store temperature",
+        "links": [
+            "1356e68.0112c1a"
+        ],
+        "x": 515,
+        "y": 320,
+        "wires": [
+            [
+                "30fc2f13.04c6c"
+            ]
+        ]
+    },
+    {
+        "id": "53f449eb.786eb8",
+        "type": "comment",
+        "z": "f8d118e1.ddd038",
+        "name": "Temperature (raw data)",
+        "info": "",
+        "x": 380,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "75dee813.4e1318",
+        "type": "link out",
+        "z": "f00a487a.95faf8",
+        "name": "Store avg temperature",
+        "links": [
+            "a10d3ee8.de1d1"
+        ],
+        "x": 835,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "9cf08084.18e73",
+        "type": "throttle",
+        "z": "f8d118e1.ddd038",
+        "name": "",
+        "throttleType": "time",
+        "timeLimit": "10",
+        "timeLimitType": "seconds",
+        "countLimit": 0,
+        "blockSize": 0,
+        "locked": false,
+        "x": 710,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8c777fd6.34859",
+        "type": "comment",
+        "z": "f8d118e1.ddd038",
+        "name": "Temperature  (mean)",
+        "info": "",
+        "x": 390,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "a10d3ee8.de1d1",
+        "type": "link in",
+        "z": "f8d118e1.ddd038",
+        "name": "IN- Store avg temperature",
+        "links": [
+            "75dee813.4e1318"
+        ],
+        "x": 515,
+        "y": 440,
+        "wires": [
+            [
+                "9cf08084.18e73"
+            ]
+        ]
+    },
+    {
+        "id": "e1da4835.94b578",
+        "type": "link in",
+        "z": "f8d118e1.ddd038",
+        "name": "IN-Store humidity",
+        "links": [
+            "42d5d5af.ca479c"
+        ],
+        "x": 515,
+        "y": 200,
+        "wires": [
+            [
+                "8759ead6.64c9f8"
+            ]
+        ]
+    },
+    {
+        "id": "8759ead6.64c9f8",
+        "type": "throttle",
+        "z": "f8d118e1.ddd038",
+        "name": "",
+        "throttleType": "time",
+        "timeLimit": "10",
+        "timeLimitType": "seconds",
+        "countLimit": 0,
+        "blockSize": 0,
+        "locked": false,
+        "x": 690,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f4efaac5.2fb3d8",
+        "type": "comment",
+        "z": "f8d118e1.ddd038",
+        "name": "Humidity (raw data)",
+        "info": "",
+        "x": 390,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "ba467ef2.eb1",
+        "type": "link in",
+        "z": "f8d118e1.ddd038",
+        "name": "IN-Store pressure",
+        "links": [
+            "444f01f.56317"
+        ],
+        "x": 515,
+        "y": 100,
+        "wires": [
+            [
+                "b4e9441f.69a108"
+            ]
+        ]
+    },
+    {
+        "id": "b4e9441f.69a108",
+        "type": "throttle",
+        "z": "f8d118e1.ddd038",
+        "name": "",
+        "throttleType": "time",
+        "timeLimit": "10",
+        "timeLimitType": "seconds",
+        "countLimit": 0,
+        "blockSize": 0,
+        "locked": false,
+        "x": 690,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b9e920ba.97a7b",
+        "type": "comment",
+        "z": "f8d118e1.ddd038",
+        "name": "Pressure (raw data)",
+        "info": "",
+        "x": 390,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "2f3f528a.711dce",
+        "type": "change",
+        "z": "f00a487a.95faf8",
+        "name": "humidity",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.humidity",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 180,
+        "wires": [
+            [
+                "42d5d5af.ca479c"
+            ]
+        ]
+    },
+    {
+        "id": "3fe17a43.53da76",
+        "type": "change",
+        "z": "f00a487a.95faf8",
+        "name": "pressure",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.pressure",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 80,
+        "wires": [
+            [
+                "444f01f.56317"
+            ]
+        ]
+    },
+    {
+        "id": "42d5d5af.ca479c",
+        "type": "link out",
+        "z": "f00a487a.95faf8",
+        "name": "Store humidity",
+        "links": [
+            "e1da4835.94b578"
+        ],
+        "x": 835,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "444f01f.56317",
+        "type": "link out",
+        "z": "f00a487a.95faf8",
+        "name": "Store pressure",
+        "links": [
+            "ba467ef2.eb1"
+        ],
+        "x": 835,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "9cbf5a06.3d8f88",
+        "type": "DataIn",
+        "z": "f8d118e1.ddd038",
+        "collection": "2559c8bb.5f9548",
+        "name": "IN Instant Temperature",
+        "update": true,
+        "path": "/temperature",
+        "x": 1220,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "30fc2f13.04c6c",
+        "type": "throttle",
+        "z": "f8d118e1.ddd038",
+        "name": "",
+        "throttleType": "time",
+        "timeLimit": "2",
+        "timeLimitType": "seconds",
+        "countLimit": 0,
+        "blockSize": 0,
+        "locked": false,
+        "x": 690,
+        "y": 320,
+        "wires": [
+            [
+                "7be43f8a.9c5ed"
+            ]
+        ]
+    },
+    {
+        "id": "8e146e45.20868",
+        "type": "debug",
+        "z": "f8d118e1.ddd038",
+        "name": "Current write",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload[0]",
+        "targetType": "msg",
+        "x": 1190,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "7be43f8a.9c5ed",
+        "type": "function",
+        "z": "f8d118e1.ddd038",
+        "name": "Format and add timestamp",
+        "func": "const timestamp = new Date();\n\nmsg.payload = [{\n    timestamp:   timestamp.toString(),\n    temperature: msg.payload\n    }];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 940,
+        "y": 320,
+        "wires": [
+            [
+                "8e146e45.20868",
+                "9cbf5a06.3d8f88"
+            ]
+        ]
+    },
+    {
+        "id": "d3039eec.02d7d",
+        "type": "function",
+        "z": "f00a487a.95faf8",
+        "name": "Temperature mean",
+        "func": "// msg output for graphing average data\nmsg2 = {payload: msg.payload, topic: 'Average over last 10 reads'};\nreturn [msg2];",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 830,
+        "y": 620,
+        "wires": [
+            [
+                "62adcdca.2488b4"
+            ]
+        ]
+    },
+    {
+        "id": "47ac34bd.0f964c",
+        "type": "function",
+        "z": "f00a487a.95faf8",
+        "name": "Temperature stdDev",
+        "func": "// msg output for graphing standard deviation data\nmsg3 = {payload: msg.payload, topic: 'Standard deviation over last 10 reads'};\nreturn [msg3];",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 840,
+        "y": 560,
+        "wires": [
+            [
+                "62adcdca.2488b4"
+            ]
+        ]
+    },
+    {
+        "id": "62adcdca.2488b4",
+        "type": "ui_chart",
+        "z": "f00a487a.95faf8",
+        "name": "Temperature",
+        "group": "f3aaca43.eb9518",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "label": "{{msg.topic}}",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "auto",
+        "interpolate": "linear",
+        "nodata": "No Data",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "6",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 1130,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2402d533.b9ad9a",
+        "type": "comment",
+        "z": "f00a487a.95faf8",
+        "name": "Pressure (raw data)",
+        "info": "",
+        "x": 910,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "f8766cea.6def08",
+        "type": "comment",
+        "z": "f00a487a.95faf8",
+        "name": "Humidity (raw data)",
+        "info": "",
+        "x": 910,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "4c070b26.36ac94",
+        "type": "comment",
+        "z": "f00a487a.95faf8",
+        "name": "Temperature (raw data)",
+        "info": "",
+        "x": 920,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "43d13e2a.3a0bc",
+        "type": "comment",
+        "z": "f00a487a.95faf8",
+        "name": "Temperature  (mean)",
+        "info": "",
+        "x": 910,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "51940555.54143c",
+        "type": "DataOut",
+        "z": "f8d118e1.ddd038",
+        "collection": "2559c8bb.5f9548",
+        "name": "OUT Instant Temperature",
+        "path": "/temperature",
+        "error": true,
+        "x": 990,
+        "y": 600,
+        "wires": [
+            [
+                "9d370773.f440d8"
+            ]
+        ]
+    },
+    {
+        "id": "9d370773.f440d8",
+        "type": "debug",
+        "z": "f8d118e1.ddd038",
+        "name": "Last write",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "msg.payload[-1]",
+        "targetType": "jsonata",
+        "x": 1210,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "a141f587.512fd8",
+        "type": "inject",
+        "z": "f8d118e1.ddd038",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 780,
+        "y": 600,
+        "wires": [
+            [
+                "51940555.54143c"
+            ]
+        ]
+    },
+    {
+        "id": "7cda0813.cf0aa",
+        "type": "comment",
+        "z": "f8d118e1.ddd038",
+        "name": "Access data in jsonDB, on demand",
+        "info": "",
+        "x": 740,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "4a149d98.81f80c",
+        "type": "pusher in",
+        "z": "9efb5a08.45beb8",
+        "name": "Pusher",
+        "channel": "data_env",
+        "cluster": "eu",
+        "eventname": "env",
+        "x": 230,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "edc6e824.0a0d4",
+        "type": "pusher in",
+        "z": "9efb5a08.45beb8",
+        "name": "Pusher",
+        "channel": "data_env",
+        "cluster": "eu",
+        "eventname": "env",
+        "x": 230,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7dd8b005.98dcf",
+        "type": "pusher in",
+        "z": "9efb5a08.45beb8",
+        "name": "Pusher",
+        "channel": "data_env",
+        "cluster": "eu",
+        "eventname": "env",
+        "x": 230,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f8f7a9b5.dc74b",
+        "type": "pusher in",
+        "z": "9efb5a08.45beb8",
+        "name": "Pusher",
+        "channel": "data_env",
+        "cluster": "eu",
+        "eventname": "env",
+        "x": 230,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2bdcdd8f.b287ba",
+        "type": "pusher in",
+        "z": "9efb5a08.45beb8",
+        "name": "Pusher",
+        "channel": "data_env",
+        "cluster": "eu",
+        "eventname": "env",
+        "x": 230,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "11fb797e.100377",
+        "type": "pusher in",
+        "z": "9efb5a08.45beb8",
+        "name": "Pusher",
+        "channel": "data_env",
+        "cluster": "eu",
+        "eventname": "env",
+        "x": 370,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bf7ca024.ce81f8",
+        "type": "pusher in",
+        "z": "9efb5a08.45beb8",
+        "name": "Pusher",
+        "channel": "data_env",
+        "cluster": "eu",
+        "eventname": "env",
+        "x": 370,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6dc07b38.e3c954",
+        "type": "pusher in",
+        "z": "9efb5a08.45beb8",
+        "name": "Pusher",
+        "channel": "data_env",
+        "cluster": "eu",
+        "eventname": "env",
+        "x": 370,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "24b902f7.498e96",
+        "type": "pusher in",
+        "z": "9efb5a08.45beb8",
+        "name": "Pusher",
+        "channel": "data_env",
+        "cluster": "eu",
+        "eventname": "env",
+        "x": 370,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1ef35f53.90f111",
+        "type": "pusher in",
+        "z": "9efb5a08.45beb8",
+        "name": "Pusher",
+        "channel": "data_env",
+        "cluster": "eu",
+        "eventname": "env",
+        "x": 370,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3cfa88d0.d52078",
+        "type": "pusher in",
+        "z": "9efb5a08.45beb8",
+        "name": "Pusher",
+        "channel": "data_env",
+        "cluster": "eu",
+        "eventname": "env",
+        "x": 230,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f6081c48.33da38",
+        "type": "pusher in",
+        "z": "9efb5a08.45beb8",
+        "name": "Pusher",
+        "channel": "data_env",
+        "cluster": "eu",
+        "eventname": "env",
+        "x": 230,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "605cb6a5.6c4758",
+        "type": "pusher in",
+        "z": "9efb5a08.45beb8",
+        "name": "Pusher",
+        "channel": "data_env",
+        "cluster": "eu",
+        "eventname": "env",
+        "x": 370,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d473b1a6.1dc09",
+        "type": "pusher in",
+        "z": "9efb5a08.45beb8",
+        "name": "Pusher",
+        "channel": "data_env",
+        "cluster": "eu",
+        "eventname": "env",
+        "x": 370,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "404f56b2.9672f8",
+        "type": "pusher in",
+        "z": "9efb5a08.45beb8",
+        "name": "Pusher",
+        "channel": "data_env",
+        "cluster": "eu",
+        "eventname": "env",
+        "x": 230,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "18011716.33ffb1",
+        "type": "pusher in",
+        "z": "9efb5a08.45beb8",
+        "name": "Pusher",
+        "channel": "data_env",
+        "cluster": "eu",
+        "eventname": "env",
+        "x": 370,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4d604ac3.8527bc",
+        "type": "pusher in",
+        "z": "9efb5a08.45beb8",
+        "name": "Pusher",
+        "channel": "data_env",
+        "cluster": "eu",
+        "eventname": "env",
+        "x": 230,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c20b37b9.47bd28",
+        "type": "pusher in",
+        "z": "9efb5a08.45beb8",
+        "name": "Pusher",
+        "channel": "data_env",
+        "cluster": "eu",
+        "eventname": "env",
+        "x": 370,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    }
+]
