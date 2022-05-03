@@ -2,21 +2,21 @@
     {
         "id": "f00a487a.95faf8",
         "type": "tab",
-        "label": "Basic statistics",
+        "label": "Data processing",
         "disabled": false,
         "info": ""
     },
     {
         "id": "f8d118e1.ddd038",
         "type": "tab",
-        "label": "Store aggregated data",
+        "label": "Store data in InfluxDB",
         "disabled": false,
         "info": ""
     },
     {
         "id": "c77ab3af.0f028",
         "type": "tab",
-        "label": "Debug InfluxDB",
+        "label": "Read data",
         "disabled": false,
         "info": ""
     },
@@ -199,12 +199,11 @@
         "channel": "data_env",
         "cluster": "eu",
         "eventname": "env",
-        "x": 170,
-        "y": 220,
+        "x": 190,
+        "y": 460,
         "wires": [
             [
                 "3c167705.047788",
-                "9e023267.f4a38",
                 "2f3f528a.711dce",
                 "3fe17a43.53da76"
             ]
@@ -218,8 +217,8 @@
         "func": "msg.topic=\"standardDeviation\"\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 430,
-        "y": 500,
+        "x": 450,
+        "y": 740,
         "wires": [
             [
                 "af35f1da.61f24"
@@ -234,8 +233,8 @@
         "func": "msg.topic=\"mean\"\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 530,
-        "y": 440,
+        "x": 550,
+        "y": 680,
         "wires": [
             [
                 "dee2f3d8.d5e29"
@@ -256,8 +255,8 @@
         "parameterFieldType": "msg",
         "stripFunction": false,
         "resultOnly": true,
-        "x": 690,
-        "y": 440,
+        "x": 710,
+        "y": 680,
         "wires": [
             [
                 "616f042b.87437c",
@@ -271,14 +270,14 @@
         "type": "debug",
         "z": "f00a487a.95faf8",
         "name": "AVERAGE temperature (last 10)",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "payload",
         "targetType": "msg",
-        "x": 1050,
-        "y": 500,
+        "x": 1070,
+        "y": 740,
         "wires": []
     },
     {
@@ -300,13 +299,14 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 490,
-        "y": 200,
+        "x": 510,
+        "y": 400,
         "wires": [
             [
                 "da94596a.0d2188",
                 "f39c6034.25feb",
-                "1356e68.0112c1a"
+                "1356e68.0112c1a",
+                "b0507720.53d728"
             ]
         ]
     },
@@ -317,13 +317,12 @@
         "name": "",
         "bufferLen": "10",
         "startWhenFilled": false,
-        "x": 350,
-        "y": 440,
+        "x": 370,
+        "y": 680,
         "wires": [
             [
                 "12c13b1e.ff04b5",
-                "16f621c6.5c6aee",
-                "dd4dd871.0552a8"
+                "16f621c6.5c6aee"
             ]
         ]
     },
@@ -332,14 +331,14 @@
         "type": "debug",
         "z": "f00a487a.95faf8",
         "name": "STANDARD DEV temperature (last 10)",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "payload",
         "targetType": "msg",
-        "x": 1030,
-        "y": 560,
+        "x": 1050,
+        "y": 800,
         "wires": []
     },
     {
@@ -356,8 +355,8 @@
         "parameterFieldType": "msg",
         "stripFunction": false,
         "resultOnly": true,
-        "x": 670,
-        "y": 500,
+        "x": 690,
+        "y": 740,
         "wires": [
             [
                 "6a02ae7b.f102",
@@ -401,8 +400,8 @@
         ],
         "useOldStyle": false,
         "outputs": 1,
-        "x": 1230,
-        "y": 280,
+        "x": 1250,
+        "y": 520,
         "wires": [
             []
         ]
@@ -415,8 +414,8 @@
         "func": "// msg output for graphing instant data\nmsg1 = {payload: msg.payload, topic: 'Instant read'};\nreturn [msg1];",
         "outputs": 1,
         "noerr": 0,
-        "x": 990,
-        "y": 200,
+        "x": 1010,
+        "y": 460,
         "wires": [
             [
                 "62adcdca.2488b4"
@@ -431,8 +430,8 @@
         "func": "// msg output for graphing average data\nmsg2 = {payload: msg.payload, topic: 'Average over last 10 reads'};\nreturn [msg2];",
         "outputs": 1,
         "noerr": 0,
-        "x": 990,
-        "y": 260,
+        "x": 1010,
+        "y": 520,
         "wires": [
             [
                 "62adcdca.2488b4"
@@ -447,8 +446,8 @@
         "func": "// msg output for graphing standard deviation data\nmsg3 = {payload: msg.payload, topic: 'Standard deviation over last 10 reads'};\nreturn [msg3];",
         "outputs": 1,
         "noerr": 0,
-        "x": 1000,
-        "y": 340,
+        "x": 1020,
+        "y": 580,
         "wires": [
             [
                 "62adcdca.2488b4"
@@ -463,8 +462,8 @@
         "links": [
             "6c7005d6.b64d5c"
         ],
-        "x": 835,
-        "y": 160,
+        "x": 955,
+        "y": 360,
         "wires": []
     },
     {
@@ -476,7 +475,7 @@
             "1356e68.0112c1a"
         ],
         "x": 515,
-        "y": 320,
+        "y": 560,
         "wires": [
             [
                 "a1f41c67.d1372"
@@ -494,8 +493,8 @@
         "countLimit": 0,
         "blockSize": 0,
         "locked": false,
-        "x": 690,
-        "y": 320,
+        "x": 610,
+        "y": 560,
         "wires": [
             [
                 "7e9cb44b.d40adc"
@@ -514,7 +513,7 @@
         "complete": "payload",
         "targetType": "msg",
         "x": 1100,
-        "y": 380,
+        "y": 620,
         "wires": []
     },
     {
@@ -534,19 +533,19 @@
         "name": "InfluxDB: Temperature raw data",
         "info": "",
         "x": 350,
-        "y": 320,
+        "y": 560,
         "wires": []
     },
     {
         "id": "7e9cb44b.d40adc",
         "type": "function",
         "z": "f8d118e1.ddd038",
-        "name": "INSERT data point",
+        "name": "INSERT temperature point",
         "func": "msg.payload = {location:\"HANGAR\", room: \"Warehouse\", temperature: msg.payload }\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 890,
-        "y": 320,
+        "x": 840,
+        "y": 560,
         "wires": [
             [
                 "49423bdc.9322e4",
@@ -555,31 +554,20 @@
         ]
     },
     {
-        "id": "dd4dd871.0552a8",
-        "type": "debug",
-        "z": "f00a487a.95faf8",
-        "name": "BUFFER Temperature",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "x": 560,
-        "y": 400,
-        "wires": []
-    },
-    {
         "id": "b7e150ab.b8806",
         "type": "influxdb out",
         "z": "f8d118e1.ddd038",
         "influxdb": "e221cd11.84b39",
-        "name": "",
+        "name": "Writing temperature data",
         "measurement": "sense_hat",
         "precision": "",
         "retentionPolicy": "",
-        "x": 1200,
-        "y": 320,
+        "database": "",
+        "retentionPolicyV18Flux": "",
+        "org": "",
+        "bucket": "",
+        "x": 1150,
+        "y": 560,
         "wires": []
     },
     {
@@ -587,24 +575,28 @@
         "type": "influxdb out",
         "z": "f8d118e1.ddd038",
         "influxdb": "e221cd11.84b39",
-        "name": "",
+        "name": "Writing mean temperature",
         "measurement": "sense_hat_avg",
         "precision": "",
         "retentionPolicy": "",
-        "x": 1210,
-        "y": 460,
+        "database": "",
+        "retentionPolicyV18Flux": "",
+        "org": "",
+        "bucket": "",
+        "x": 1150,
+        "y": 700,
         "wires": []
     },
     {
         "id": "2a9062d2.7107de",
         "type": "function",
         "z": "f8d118e1.ddd038",
-        "name": "INSERT data point",
+        "name": "INSERT averaged temperature",
         "func": "msg.payload = {location:\"HANGAR\", room: \"Warehouse\", temperature: msg.payload }\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 910,
-        "y": 460,
+        "x": 850,
+        "y": 700,
         "wires": [
             [
                 "59744186.0e569",
@@ -624,7 +616,7 @@
         "complete": "payload",
         "targetType": "msg",
         "x": 1140,
-        "y": 520,
+        "y": 760,
         "wires": []
     },
     {
@@ -635,8 +627,8 @@
         "links": [
             "a10d3ee8.de1d1"
         ],
-        "x": 1215,
-        "y": 440,
+        "x": 1235,
+        "y": 680,
         "wires": []
     },
     {
@@ -650,8 +642,8 @@
         "countLimit": 0,
         "blockSize": 0,
         "locked": false,
-        "x": 710,
-        "y": 460,
+        "x": 610,
+        "y": 700,
         "wires": [
             [
                 "2a9062d2.7107de"
@@ -665,7 +657,7 @@
         "name": "InfluxDB: Temperature averaged data",
         "info": "",
         "x": 330,
-        "y": 460,
+        "y": 700,
         "wires": []
     },
     {
@@ -677,7 +669,7 @@
             "75dee813.4e1318"
         ],
         "x": 515,
-        "y": 460,
+        "y": 700,
         "wires": [
             [
                 "9cf08084.18e73"
@@ -730,6 +722,7 @@
         "rawOutput": false,
         "precision": "",
         "retentionPolicy": "",
+        "org": "",
         "x": 800,
         "y": 200,
         "wires": [
@@ -885,7 +878,7 @@
         "type": "function",
         "z": "c77ab3af.0f028",
         "name": "Last point",
-        "func": "const arr = msg.payload;\nmsg.payload = arr.slice(-1)[0]\nreturn msg;",
+        "func": "const arr = msg.payload;\n\n// Use [0] to return the item itself\n//  Otherwise, it will return an array of a single item\nmsg.payload = arr.slice(-1)[0]\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 1060,
@@ -897,20 +890,6 @@
         ]
     },
     {
-        "id": "9e023267.f4a38",
-        "type": "debug",
-        "z": "f00a487a.95faf8",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "x": 330,
-        "y": 300,
-        "wires": []
-    },
-    {
         "id": "e1da4835.94b578",
         "type": "link in",
         "z": "f8d118e1.ddd038",
@@ -919,7 +898,7 @@
             "42d5d5af.ca479c"
         ],
         "x": 515,
-        "y": 200,
+        "y": 320,
         "wires": [
             [
                 "8759ead6.64c9f8"
@@ -937,8 +916,8 @@
         "countLimit": 0,
         "blockSize": 0,
         "locked": false,
-        "x": 690,
-        "y": 200,
+        "x": 610,
+        "y": 320,
         "wires": [
             [
                 "3799d1a5.6d0cce"
@@ -957,7 +936,7 @@
         "complete": "payload",
         "targetType": "msg",
         "x": 1120,
-        "y": 160,
+        "y": 280,
         "wires": []
     },
     {
@@ -967,19 +946,19 @@
         "name": "InfluxDB: Humidity raw data",
         "info": "",
         "x": 360,
-        "y": 200,
+        "y": 320,
         "wires": []
     },
     {
         "id": "3799d1a5.6d0cce",
         "type": "function",
         "z": "f8d118e1.ddd038",
-        "name": "INSERT data point",
+        "name": "INSERT humidity point",
         "func": "msg.payload = {location:\"HANGAR\", room: \"Warehouse\", humidity: msg.payload }\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 890,
-        "y": 200,
+        "x": 820,
+        "y": 320,
         "wires": [
             [
                 "11245af0.3e7275",
@@ -992,12 +971,16 @@
         "type": "influxdb out",
         "z": "f8d118e1.ddd038",
         "influxdb": "e221cd11.84b39",
-        "name": "",
+        "name": "Writing humidity data",
         "measurement": "sense_hat_humidity",
         "precision": "",
         "retentionPolicy": "",
-        "x": 1230,
-        "y": 200,
+        "database": "",
+        "retentionPolicyV18Flux": "",
+        "org": "",
+        "bucket": "",
+        "x": 1140,
+        "y": 320,
         "wires": []
     },
     {
@@ -1027,7 +1010,7 @@
         "countLimit": 0,
         "blockSize": 0,
         "locked": false,
-        "x": 690,
+        "x": 610,
         "y": 100,
         "wires": [
             [
@@ -1046,7 +1029,7 @@
         "tostatus": false,
         "complete": "payload",
         "targetType": "msg",
-        "x": 1120,
+        "x": 1100,
         "y": 60,
         "wires": []
     },
@@ -1056,19 +1039,19 @@
         "z": "f8d118e1.ddd038",
         "name": "InfluxDB: Pressure raw data",
         "info": "",
-        "x": 360,
-        "y": 100,
+        "x": 440,
+        "y": 60,
         "wires": []
     },
     {
         "id": "19ec77e1.420dd8",
         "type": "function",
         "z": "f8d118e1.ddd038",
-        "name": "INSERT data point",
+        "name": "INSERT pressure point",
         "func": "msg.payload = {location:\"HANGAR\", room: \"Warehouse\", pressure: msg.payload }\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 890,
+        "x": 820,
         "y": 100,
         "wires": [
             [
@@ -1082,11 +1065,15 @@
         "type": "influxdb out",
         "z": "f8d118e1.ddd038",
         "influxdb": "e221cd11.84b39",
-        "name": "",
+        "name": "Writing pressure data",
         "measurement": "sense_hat_pressure",
         "precision": "",
         "retentionPolicy": "",
-        "x": 1230,
+        "database": "",
+        "retentionPolicyV18Flux": "",
+        "org": "",
+        "bucket": "",
+        "x": 1140,
         "y": 100,
         "wires": []
     },
@@ -1109,8 +1096,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 500,
-        "y": 140,
+        "x": 520,
+        "y": 340,
         "wires": [
             [
                 "42d5d5af.ca479c"
@@ -1136,11 +1123,14 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 500,
-        "y": 80,
+        "x": 520,
+        "y": 280,
         "wires": [
             [
-                "444f01f.56317"
+                "444f01f.56317",
+                "a9dbe831.642938",
+                "4c16d08d.48318",
+                "5acf4438.9278cc"
             ]
         ]
     },
@@ -1152,8 +1142,8 @@
         "links": [
             "e1da4835.94b578"
         ],
-        "x": 835,
-        "y": 100,
+        "x": 955,
+        "y": 320,
         "wires": []
     },
     {
@@ -1164,8 +1154,473 @@
         "links": [
             "ba467ef2.eb1"
         ],
-        "x": 835,
+        "x": 955,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "a9dbe831.642938",
+        "type": "function",
+        "z": "f00a487a.95faf8",
+        "name": "mean",
+        "func": "msg.topic=\"mean\"\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 850,
+        "y": 100,
+        "wires": [
+            [
+                "acaa44e8.3c5648"
+            ]
+        ]
+    },
+    {
+        "id": "acaa44e8.3c5648",
+        "type": "statistics",
+        "z": "f00a487a.95faf8",
+        "name": "statistics over 10",
+        "dataSetSize": "10",
+        "inputField": "payload",
+        "inputFieldType": "msg",
+        "resultField": "payload",
+        "resultFieldType": "msg",
+        "parameterField": "",
+        "parameterFieldType": "msg",
+        "stripFunction": false,
+        "resultOnly": true,
+        "x": 1010,
+        "y": 100,
+        "wires": [
+            [
+                "ba6d2fb3.29606",
+                "479856eb.0f1998"
+            ]
+        ]
+    },
+    {
+        "id": "a6f6b547.673f48",
+        "type": "statistics",
+        "z": "f00a487a.95faf8",
+        "name": "statistics over 10",
+        "dataSetSize": "10",
+        "inputField": "payload",
+        "inputFieldType": "msg",
+        "resultField": "payload",
+        "resultFieldType": "msg",
+        "parameterField": "",
+        "parameterFieldType": "msg",
+        "stripFunction": false,
+        "resultOnly": true,
+        "x": 990,
+        "y": 160,
+        "wires": [
+            [
+                "f1574ef1.c57ec"
+            ]
+        ]
+    },
+    {
+        "id": "4c16d08d.48318",
+        "type": "function",
+        "z": "f00a487a.95faf8",
+        "name": "standardDeviation",
+        "func": "msg.topic=\"standardDeviation\"\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 750,
+        "y": 160,
+        "wires": [
+            [
+                "a6f6b547.673f48"
+            ]
+        ]
+    },
+    {
+        "id": "ba6d2fb3.29606",
+        "type": "debug",
+        "z": "f00a487a.95faf8",
+        "name": "AVERAGE pressure (last 10)",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1340,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "f1574ef1.c57ec",
+        "type": "debug",
+        "z": "f00a487a.95faf8",
+        "name": "STANDARD DEV pressure (last 10)",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1320,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "479856eb.0f1998",
+        "type": "link out",
+        "z": "f00a487a.95faf8",
+        "name": "Store avg pressure",
+        "links": [
+            "838899e.f988368"
+        ],
+        "x": 1195,
         "y": 40,
+        "wires": []
+    },
+    {
+        "id": "838899e.f988368",
+        "type": "link in",
+        "z": "f8d118e1.ddd038",
+        "name": "IN-Store avg pressure",
+        "links": [
+            "479856eb.0f1998"
+        ],
+        "x": 515,
+        "y": 160,
+        "wires": [
+            [
+                "c9e9060d.5a96f8"
+            ]
+        ]
+    },
+    {
+        "id": "c9e9060d.5a96f8",
+        "type": "throttle",
+        "z": "f8d118e1.ddd038",
+        "name": "",
+        "throttleType": "time",
+        "timeLimit": "10",
+        "timeLimitType": "seconds",
+        "countLimit": 0,
+        "blockSize": 0,
+        "locked": false,
+        "x": 610,
+        "y": 160,
+        "wires": [
+            [
+                "a5cf43e1.be30a"
+            ]
+        ]
+    },
+    {
+        "id": "3bc7d85.d769128",
+        "type": "debug",
+        "z": "f8d118e1.ddd038",
+        "name": "Avg. pressure",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1120,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "56c2eb39.d92844",
+        "type": "comment",
+        "z": "f8d118e1.ddd038",
+        "name": "InfluxDB: Pressure averaged data",
+        "info": "",
+        "x": 430,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "a5cf43e1.be30a",
+        "type": "function",
+        "z": "f8d118e1.ddd038",
+        "name": "INSERT avg pressure",
+        "func": "msg.payload = {location:\"HANGAR\", room: \"Warehouse\", pressure: msg.payload }\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 820,
+        "y": 160,
+        "wires": [
+            [
+                "3bc7d85.d769128",
+                "ba7b6e93.33045"
+            ]
+        ]
+    },
+    {
+        "id": "ba7b6e93.33045",
+        "type": "influxdb out",
+        "z": "f8d118e1.ddd038",
+        "influxdb": "e221cd11.84b39",
+        "name": "Writing pressure data",
+        "measurement": "sense_hat_pressure_avg",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "",
+        "retentionPolicyV18Flux": "",
+        "org": "",
+        "bucket": "",
+        "x": 1140,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "fa1b64f8.12df78",
+        "type": "comment",
+        "z": "c77ab3af.0f028",
+        "name": "InfluxDB READ query: Averaged pressure",
+        "info": "",
+        "x": 280,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "50de13c2.c9a2ec",
+        "type": "inject",
+        "z": "c77ab3af.0f028",
+        "name": "Trigger database",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "10",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "",
+        "x": 230,
+        "y": 760,
+        "wires": [
+            [
+                "ddfb8eee.9f5db"
+            ]
+        ]
+    },
+    {
+        "id": "ddfb8eee.9f5db",
+        "type": "function",
+        "z": "c77ab3af.0f028",
+        "name": "SELECT points in the last 60s",
+        "func": "msg.query=\"SELECT * FROM sense_hat_pressure_avg WHERE time > now() - 60s\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 470,
+        "y": 760,
+        "wires": [
+            [
+                "8889a40b.d07558"
+            ]
+        ]
+    },
+    {
+        "id": "8889a40b.d07558",
+        "type": "influxdb in",
+        "z": "c77ab3af.0f028",
+        "influxdb": "ccc0b64f.610828",
+        "name": "'sense_hat' SELECT query II",
+        "query": "",
+        "rawOutput": false,
+        "precision": "",
+        "retentionPolicy": "",
+        "x": 800,
+        "y": 760,
+        "wires": [
+            [
+                "70397706.03ea98",
+                "8f1ad90a.c30bc8"
+            ]
+        ]
+    },
+    {
+        "id": "7a0ab85f.776588",
+        "type": "debug",
+        "z": "c77ab3af.0f028",
+        "name": "Last pressure AVERAGED",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1260,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "70397706.03ea98",
+        "type": "debug",
+        "z": "c77ab3af.0f028",
+        "name": "All points",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1040,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "8f1ad90a.c30bc8",
+        "type": "function",
+        "z": "c77ab3af.0f028",
+        "name": "Last point",
+        "func": "const arr = msg.payload;\n\n// Use [0] to return the item itself\n//  Otherwise, it will return an array of a single item\nmsg.payload = arr.slice(-1)[0]\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1040,
+        "y": 800,
+        "wires": [
+            [
+                "7a0ab85f.776588"
+            ]
+        ]
+    },
+    {
+        "id": "44c4af37.b13f6",
+        "type": "comment",
+        "z": "c77ab3af.0f028",
+        "name": "InfluxDB READ query: Instant pressure",
+        "info": "",
+        "x": 270,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "93fc22c5.ce11",
+        "type": "inject",
+        "z": "c77ab3af.0f028",
+        "name": "Trigger database",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "10",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "",
+        "x": 230,
+        "y": 640,
+        "wires": [
+            [
+                "f297344b.6d0cc8"
+            ]
+        ]
+    },
+    {
+        "id": "f297344b.6d0cc8",
+        "type": "function",
+        "z": "c77ab3af.0f028",
+        "name": "SELECT points in the last 60s",
+        "func": "msg.query=\"SELECT * FROM sense_hat_pressure WHERE time > now() - 60s\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 470,
+        "y": 640,
+        "wires": [
+            [
+                "8d6055d8.898758"
+            ]
+        ]
+    },
+    {
+        "id": "8d6055d8.898758",
+        "type": "influxdb in",
+        "z": "c77ab3af.0f028",
+        "influxdb": "ccc0b64f.610828",
+        "name": "'sense_hat' SELECT query II",
+        "query": "",
+        "rawOutput": false,
+        "precision": "",
+        "retentionPolicy": "",
+        "x": 800,
+        "y": 640,
+        "wires": [
+            [
+                "a1f7a767.194068",
+                "49eceaf0.587e04"
+            ]
+        ]
+    },
+    {
+        "id": "9fca67c0.daa8a8",
+        "type": "debug",
+        "z": "c77ab3af.0f028",
+        "name": "Last pressure",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1220,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "a1f7a767.194068",
+        "type": "debug",
+        "z": "c77ab3af.0f028",
+        "name": "All points",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1040,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "49eceaf0.587e04",
+        "type": "function",
+        "z": "c77ab3af.0f028",
+        "name": "Last point",
+        "func": "const arr = msg.payload;\n\n// Use [0] to return the item itself\n//  Otherwise, it will return an array of a single item\nmsg.payload = arr.slice(-1)[0]\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1040,
+        "y": 680,
+        "wires": [
+            [
+                "9fca67c0.daa8a8"
+            ]
+        ]
+    },
+    {
+        "id": "5acf4438.9278cc",
+        "type": "debug",
+        "z": "f00a487a.95faf8",
+        "name": "Pressure",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 960,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "b0507720.53d728",
+        "type": "debug",
+        "z": "f00a487a.95faf8",
+        "name": "Temperature",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 970,
+        "y": 400,
         "wires": []
     }
 ]

@@ -6,4 +6,5 @@ echo 'The Pusher app key is ' $APP_KEY
 echo 'The Pusher cluster is ' $APP_CLUSTER
 
 # Start app
+# Raw values plus average pressure & temperature
 npm run influxDB_all

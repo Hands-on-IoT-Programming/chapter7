@@ -5,5 +5,5 @@ set -o allexport; source .env; set +o allexport
 echo 'The Pusher app key is ' $APP_KEY
 echo 'The Pusher cluster is ' $APP_CLUSTER
 
-# Start app
+# Start app: raw temperature
 npm run influxDB
