@@ -1,5 +1,7 @@
 # Secrets
 .env
+.env.github
+.env.gmail
 context
 jsonDB
 # NodeRED files inside user data folder
