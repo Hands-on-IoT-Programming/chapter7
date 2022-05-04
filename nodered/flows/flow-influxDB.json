@@ -7,6 +7,13 @@
         "info": ""
     },
     {
+        "id": "a96ba3b1.9582",
+        "type": "tab",
+        "label": "IMU data",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "f8d118e1.ddd038",
         "type": "tab",
         "label": "Store data in InfluxDB",
@@ -117,21 +124,11 @@
         }
     },
     {
-        "id": "1071f503.257ceb",
-        "type": "ui_tab",
-        "z": "",
-        "name": "Sense Hat",
-        "icon": "dashboard",
-        "order": 2,
-        "disabled": false,
-        "hidden": false
-    },
-    {
         "id": "f315fd49.2b923",
         "type": "ui_group",
         "z": "",
         "name": "Statistics",
-        "tab": "1071f503.257ceb",
+        "tab": "",
         "order": 1,
         "disp": true,
         "width": "6",
@@ -150,7 +147,7 @@
         "id": "f3aaca43.eb9518",
         "type": "ui_group",
         "z": "",
-        "name": "Temperature Graph",
+        "name": "Temperature data",
         "tab": "cacb2438.d13638",
         "order": 2,
         "disp": true,
@@ -163,7 +160,7 @@
         "z": "",
         "name": "Time series",
         "icon": "dashboard",
-        "order": 1,
+        "order": 2,
         "disabled": false,
         "hidden": false
     },
@@ -192,6 +189,36 @@
         "influxdbVersion": "1.x"
     },
     {
+        "id": "cdbd7873.ee2528",
+        "type": "ui_group",
+        "z": "",
+        "name": "Motion sensors",
+        "tab": "77e9623b.fb60dc",
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "a7ed8a6e.97d6e8",
+        "type": "ui_group",
+        "z": "",
+        "name": "Compass",
+        "tab": "77e9623b.fb60dc",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "77e9623b.fb60dc",
+        "type": "ui_tab",
+        "z": "",
+        "name": "IMU",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
         "id": "bb270b26.18d878",
         "type": "pusher in",
         "z": "f00a487a.95faf8",
@@ -199,14 +226,11 @@
         "channel": "data_env",
         "cluster": "eu",
         "eventname": "env",
-        "x": 170,
-        "y": 220,
+        "x": 70,
+        "y": 200,
         "wires": [
             [
-                "3c167705.047788",
-                "9e023267.f4a38",
-                "2f3f528a.711dce",
-                "3fe17a43.53da76"
+                "ff102b7d.3d8168"
             ]
         ]
     },
@@ -218,7 +242,7 @@
         "func": "msg.topic=\"standardDeviation\"\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 430,
+        "x": 490,
         "y": 500,
         "wires": [
             [
@@ -234,7 +258,7 @@
         "func": "msg.topic=\"mean\"\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 530,
+        "x": 590,
         "y": 440,
         "wires": [
             [
@@ -256,7 +280,7 @@
         "parameterFieldType": "msg",
         "stripFunction": false,
         "resultOnly": true,
-        "x": 690,
+        "x": 750,
         "y": 440,
         "wires": [
             [
@@ -277,7 +301,7 @@
         "tostatus": false,
         "complete": "payload",
         "targetType": "msg",
-        "x": 1050,
+        "x": 1110,
         "y": 500,
         "wires": []
     },
@@ -300,7 +324,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 490,
+        "x": 550,
         "y": 200,
         "wires": [
             [
@@ -317,7 +341,7 @@
         "name": "",
         "bufferLen": "10",
         "startWhenFilled": false,
-        "x": 350,
+        "x": 410,
         "y": 440,
         "wires": [
             [
@@ -338,7 +362,7 @@
         "tostatus": false,
         "complete": "payload",
         "targetType": "msg",
-        "x": 1030,
+        "x": 1090,
         "y": 560,
         "wires": []
     },
@@ -356,7 +380,7 @@
         "parameterFieldType": "msg",
         "stripFunction": false,
         "resultOnly": true,
-        "x": 670,
+        "x": 730,
         "y": 500,
         "wires": [
             [
@@ -401,7 +425,7 @@
         ],
         "useOldStyle": false,
         "outputs": 1,
-        "x": 1230,
+        "x": 1290,
         "y": 280,
         "wires": [
             []
@@ -415,7 +439,7 @@
         "func": "// msg output for graphing instant data\nmsg1 = {payload: msg.payload, topic: 'Instant read'};\nreturn [msg1];",
         "outputs": 1,
         "noerr": 0,
-        "x": 990,
+        "x": 1050,
         "y": 200,
         "wires": [
             [
@@ -431,7 +455,7 @@
         "func": "// msg output for graphing average data\nmsg2 = {payload: msg.payload, topic: 'Average over last 10 reads'};\nreturn [msg2];",
         "outputs": 1,
         "noerr": 0,
-        "x": 990,
+        "x": 1050,
         "y": 260,
         "wires": [
             [
@@ -447,7 +471,7 @@
         "func": "// msg output for graphing standard deviation data\nmsg3 = {payload: msg.payload, topic: 'Standard deviation over last 10 reads'};\nreturn [msg3];",
         "outputs": 1,
         "noerr": 0,
-        "x": 1000,
+        "x": 1060,
         "y": 340,
         "wires": [
             [
@@ -463,7 +487,7 @@
         "links": [
             "6c7005d6.b64d5c"
         ],
-        "x": 835,
+        "x": 895,
         "y": 160,
         "wires": []
     },
@@ -565,7 +589,7 @@
         "tostatus": false,
         "complete": "payload",
         "targetType": "msg",
-        "x": 560,
+        "x": 620,
         "y": 400,
         "wires": []
     },
@@ -594,7 +618,7 @@
         "links": [
             "a10d3ee8.de1d1"
         ],
-        "x": 1215,
+        "x": 1275,
         "y": 440,
         "wires": []
     },
@@ -633,7 +657,7 @@
         "repeat": "10",
         "crontab": "",
         "once": true,
-        "onceDelay": "",
+        "onceDelay": "4",
         "x": 450,
         "y": 100,
         "wires": [
@@ -647,7 +671,7 @@
         "type": "function",
         "z": "c77ab3af.0f028",
         "name": "SELECT points in the last 60s",
-        "func": "//msg.query=\"SELECT * FROM temperatures\";\n//msg.query=\"SELECT last(temperature),time,location,room FROM sense_hat\";\n//msg.query=\"SELECT * FROM sense_hat WHERE time > now() - 1h limit 4\";\n//msg.query=\"SELECT * FROM sense_hat WHERE time > now() - 1m\";\nmsg.query=\"SELECT * FROM sense_hat WHERE time > now() - 60s\";\nreturn msg;",
+        "func": "//msg.query=\"SELECT * FROM temperatures\";\n//msg.query=\"SELECT last(temperature),time,location,room FROM sense_hat\";\n//msg.query=\"SELECT * FROM sense_hat WHERE time > now() - 1h limit 4\";\n//msg.query=\"SELECT * FROM sense_hat WHERE time > now() - 1m\";\n\n// Temperature\nmsg.query=\"SELECT * FROM sense_hat WHERE time > now() - 60s\";\n\n// ------ Store data before querying it -----------------------------------\n// Pressure\n//msg.query=\"SELECT * FROM sense_hat_pressure WHERE time > now() - 60s\";\n// Humidity\n//msg.query=\"SELECT * FROM sense_hat_humidity WHERE time > now() - 60s\";\n// ------------------------------------------------------------------------\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 690,
@@ -725,20 +749,6 @@
         ]
     },
     {
-        "id": "9e023267.f4a38",
-        "type": "debug",
-        "z": "f00a487a.95faf8",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "x": 330,
-        "y": 300,
-        "wires": []
-    },
-    {
         "id": "e1da4835.94b578",
         "type": "link in",
         "z": "f8d118e1.ddd038",
@@ -805,7 +815,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 500,
+        "x": 560,
         "y": 140,
         "wires": [
             [
@@ -832,7 +842,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 500,
+        "x": 560,
         "y": 80,
         "wires": [
             [
@@ -848,7 +858,7 @@
         "links": [
             "e1da4835.94b578"
         ],
-        "x": 835,
+        "x": 895,
         "y": 100,
         "wires": []
     },
@@ -860,7 +870,418 @@
         "links": [
             "ba467ef2.eb1"
         ],
-        "x": 835,
+        "x": 895,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "ff102b7d.3d8168",
+        "type": "switch",
+        "z": "f00a487a.95faf8",
+        "name": "extract",
+        "property": "payload.type",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "environment",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "motion",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 310,
+        "y": 160,
+        "wires": [
+            [
+                "932d25e1.5d6868",
+                "3c167705.047788",
+                "2f3f528a.711dce",
+                "3fe17a43.53da76"
+            ],
+            [
+                "937177ff.052d38",
+                "6c78bf66.e1516"
+            ],
+            [
+                "2d45bc5b.0696d4"
+            ]
+        ]
+    },
+    {
+        "id": "932d25e1.5d6868",
+        "type": "debug",
+        "z": "f00a487a.95faf8",
+        "name": "environment",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 370,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "937177ff.052d38",
+        "type": "debug",
+        "z": "f00a487a.95faf8",
+        "name": "motion",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 130,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "2d45bc5b.0696d4",
+        "type": "debug",
+        "z": "f00a487a.95faf8",
+        "name": "otherwise",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 120,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "1c97ef46.2a5ff1",
+        "type": "comment",
+        "z": "f00a487a.95faf8",
+        "name": "output 1: environment",
+        "info": "",
+        "x": 280,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "ccb59ffb.02f27",
+        "type": "comment",
+        "z": "f00a487a.95faf8",
+        "name": "output 2: motion",
+        "info": "",
+        "x": 300,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "29f223f4.7684ac",
+        "type": "comment",
+        "z": "f00a487a.95faf8",
+        "name": "output 3: discarded",
+        "info": "It can be produced by other IoT devices publishing in the same Pusher app & topic",
+        "x": 290,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "6c78bf66.e1516",
+        "type": "link out",
+        "z": "f00a487a.95faf8",
+        "name": "IMU out",
+        "links": [
+            "d5313b1e.3020a8"
+        ],
+        "x": 255,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "d5313b1e.3020a8",
+        "type": "link in",
+        "z": "a96ba3b1.9582",
+        "name": "IMU in",
+        "links": [
+            "6c78bf66.e1516"
+        ],
+        "x": 180,
+        "y": 260,
+        "wires": [
+            [
+                "cb57f51f.0203c8",
+                "56ebdbf9.d6fbe4",
+                "6e8f9ae.d20ac64",
+                "c1cd0e7e.b00df",
+                "e1931d1c.29375"
+            ]
+        ]
+    },
+    {
+        "id": "cb57f51f.0203c8",
+        "type": "debug",
+        "z": "a96ba3b1.9582",
+        "name": "motion",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 310,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "6e8f9ae.d20ac64",
+        "type": "change",
+        "z": "a96ba3b1.9582",
+        "name": "acceleration",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.acceleration",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 370,
+        "y": 100,
+        "wires": [
+            [
+                "f81d6512.416e98",
+                "59f2020c.b62b9c"
+            ]
+        ]
+    },
+    {
+        "id": "f81d6512.416e98",
+        "type": "ui_text",
+        "z": "a96ba3b1.9582",
+        "group": "cdbd7873.ee2528",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "aceleracion",
+        "label": "Aceleracion",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 910,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "c1cd0e7e.b00df",
+        "type": "change",
+        "z": "a96ba3b1.9582",
+        "name": "gyroscope",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.gyroscope",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 378,
+        "y": 153,
+        "wires": [
+            [
+                "446110fc.1e6d8",
+                "fa4906b5.33f118"
+            ]
+        ]
+    },
+    {
+        "id": "446110fc.1e6d8",
+        "type": "ui_text",
+        "z": "a96ba3b1.9582",
+        "group": "cdbd7873.ee2528",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "giroscopio",
+        "label": "giroscopio",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 910,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "8aa4e41e.86cbc8",
+        "type": "ui_text",
+        "z": "a96ba3b1.9582",
+        "group": "cdbd7873.ee2528",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "orientacion",
+        "label": "orientacion",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 910,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "56ebdbf9.d6fbe4",
+        "type": "change",
+        "z": "a96ba3b1.9582",
+        "name": "orientation",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.orientation",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 375,
+        "y": 206,
+        "wires": [
+            [
+                "8aa4e41e.86cbc8",
+                "f9313033.92d35"
+            ]
+        ]
+    },
+    {
+        "id": "e1931d1c.29375",
+        "type": "change",
+        "z": "a96ba3b1.9582",
+        "name": "compass",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.compass",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 365,
+        "y": 261,
+        "wires": [
+            [
+                "9881b060.59d8c",
+                "a5b325a9.9956b8"
+            ]
+        ]
+    },
+    {
+        "id": "9881b060.59d8c",
+        "type": "ui_gauge",
+        "z": "a96ba3b1.9582",
+        "name": "Compas",
+        "group": "a7ed8a6e.97d6e8",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "compass",
+        "title": "Compas",
+        "label": "",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 880,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "f9313033.92d35",
+        "type": "debug",
+        "z": "a96ba3b1.9582",
+        "name": "orientation",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 610,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "a5b325a9.9956b8",
+        "type": "debug",
+        "z": "a96ba3b1.9582",
+        "name": "compass",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 560,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "fa4906b5.33f118",
+        "type": "debug",
+        "z": "a96ba3b1.9582",
+        "name": "gyroscope",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 590,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "59f2020c.b62b9c",
+        "type": "debug",
+        "z": "a96ba3b1.9582",
+        "name": "acceleration",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 590,
         "y": 40,
         "wires": []
     }
