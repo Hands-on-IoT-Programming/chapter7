@@ -1495,7 +1495,7 @@
         "name": "InfluxDB READ query: Instant pressure",
         "info": "",
         "x": 270,
-        "y": 580,
+        "y": 540,
         "wires": []
     },
     {
@@ -1511,7 +1511,7 @@
         "once": true,
         "onceDelay": "",
         "x": 230,
-        "y": 640,
+        "y": 600,
         "wires": [
             [
                 "f297344b.6d0cc8"
@@ -1527,7 +1527,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 470,
-        "y": 640,
+        "y": 600,
         "wires": [
             [
                 "8d6055d8.898758"
@@ -1545,7 +1545,7 @@
         "precision": "",
         "retentionPolicy": "",
         "x": 800,
-        "y": 640,
+        "y": 600,
         "wires": [
             [
                 "a1f7a767.194068",
@@ -1565,7 +1565,7 @@
         "complete": "payload.pressure",
         "targetType": "msg",
         "x": 1220,
-        "y": 680,
+        "y": 640,
         "wires": []
     },
     {
@@ -1580,7 +1580,7 @@
         "complete": "payload",
         "targetType": "msg",
         "x": 1040,
-        "y": 620,
+        "y": 580,
         "wires": []
     },
     {
@@ -1592,7 +1592,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 1040,
-        "y": 680,
+        "y": 640,
         "wires": [
             [
                 "9fca67c0.daa8a8"
@@ -1628,5 +1628,117 @@
         "x": 970,
         "y": 400,
         "wires": []
+    },
+    {
+        "id": "df960acf.8a3a58",
+        "type": "comment",
+        "z": "c77ab3af.0f028",
+        "name": "InfluxDB READ query: Instant humidity",
+        "info": "",
+        "x": 270,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "cd8a31ea.18c53",
+        "type": "inject",
+        "z": "c77ab3af.0f028",
+        "name": "Trigger database",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "10",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "",
+        "x": 230,
+        "y": 920,
+        "wires": [
+            [
+                "162bdb92.eab42c"
+            ]
+        ]
+    },
+    {
+        "id": "162bdb92.eab42c",
+        "type": "function",
+        "z": "c77ab3af.0f028",
+        "name": "SELECT points in the last 60s",
+        "func": "msg.query=\"SELECT * FROM sense_hat_humidity WHERE time > now() - 60s\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 470,
+        "y": 920,
+        "wires": [
+            [
+                "bef9c4b7.3c3c98"
+            ]
+        ]
+    },
+    {
+        "id": "bef9c4b7.3c3c98",
+        "type": "influxdb in",
+        "z": "c77ab3af.0f028",
+        "influxdb": "ccc0b64f.610828",
+        "name": "'sense_hat' SELECT query II",
+        "query": "",
+        "rawOutput": false,
+        "precision": "",
+        "retentionPolicy": "",
+        "org": "",
+        "x": 800,
+        "y": 920,
+        "wires": [
+            [
+                "f542c22b.88681",
+                "3fcf86d2.000cea"
+            ]
+        ]
+    },
+    {
+        "id": "4f20da73.8eea0c",
+        "type": "debug",
+        "z": "c77ab3af.0f028",
+        "name": "Last pressure",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload.humidity",
+        "targetType": "msg",
+        "x": 1220,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "f542c22b.88681",
+        "type": "debug",
+        "z": "c77ab3af.0f028",
+        "name": "All points",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1040,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "3fcf86d2.000cea",
+        "type": "function",
+        "z": "c77ab3af.0f028",
+        "name": "Last point",
+        "func": "const arr = msg.payload;\n\n// Use [0] to return the item itself\n//  Otherwise, it will return an array of a single item\nmsg.payload = arr.slice(-1)[0]\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1040,
+        "y": 960,
+        "wires": [
+            [
+                "4f20da73.8eea0c"
+            ]
+        ]
     }
 ]
