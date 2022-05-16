@@ -191,13 +191,14 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 370,
-        "y": 280,
+        "x": 350,
+        "y": 320,
         "wires": [
             [
                 "1356e68.0112c1a",
                 "12c13b1e.ff04b5",
-                "16f621c6.5c6aee"
+                "16f621c6.5c6aee",
+                "da987e8b.4f0c28"
             ]
         ]
     },
@@ -210,7 +211,7 @@
             "6c7005d6.b64d5c"
         ],
         "x": 835,
-        "y": 280,
+        "y": 360,
         "wires": []
     },
     {
@@ -251,7 +252,7 @@
         "blockSize": 0,
         "locked": false,
         "x": 680,
-        "y": 480,
+        "y": 520,
         "wires": [
             [
                 "b4d50b55.6249a"
@@ -265,7 +266,7 @@
         "name": "Temperature  (mean)",
         "info": "",
         "x": 390,
-        "y": 440,
+        "y": 480,
         "wires": []
     },
     {
@@ -277,7 +278,7 @@
             "75dee813.4e1318"
         ],
         "x": 515,
-        "y": 480,
+        "y": 520,
         "wires": [
             [
                 "9cf08084.18e73"
@@ -480,21 +481,6 @@
         ]
     },
     {
-        "id": "8e146e45.20868",
-        "type": "debug",
-        "z": "f8d118e1.ddd038",
-        "name": "Current write",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload[0]",
-        "targetType": "msg",
-        "x": 1210,
-        "y": 360,
-        "wires": []
-    },
-    {
         "id": "7be43f8a.9c5ed",
         "type": "function",
         "z": "f8d118e1.ddd038",
@@ -506,8 +492,8 @@
         "y": 400,
         "wires": [
             [
-                "8e146e45.20868",
-                "9cbf5a06.3d8f88"
+                "9cbf5a06.3d8f88",
+                "29051e6c.82e832"
             ]
         ]
     },
@@ -538,7 +524,7 @@
         "name": "Temperature (raw data)",
         "info": "",
         "x": 920,
-        "y": 240,
+        "y": 260,
         "wires": []
     },
     {
@@ -549,8 +535,8 @@
         "func": "msg.topic=\"mean\"\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 510,
-        "y": 380,
+        "x": 470,
+        "y": 500,
         "wires": [
             [
                 "dee2f3d8.d5e29"
@@ -571,11 +557,12 @@
         "parameterFieldType": "msg",
         "stripFunction": false,
         "resultOnly": true,
-        "x": 790,
-        "y": 380,
+        "x": 750,
+        "y": 500,
         "wires": [
             [
-                "75dee813.4e1318"
+                "75dee813.4e1318",
+                "4bc476b1.bb96e"
             ]
         ]
     },
@@ -587,8 +574,8 @@
         "links": [
             "a10d3ee8.de1d1"
         ],
-        "x": 935,
-        "y": 380,
+        "x": 895,
+        "y": 520,
         "wires": []
     },
     {
@@ -597,8 +584,8 @@
         "z": "f00a487a.95faf8",
         "name": "Temperature  (mean)",
         "info": "",
-        "x": 1010,
-        "y": 340,
+        "x": 970,
+        "y": 420,
         "wires": []
     },
     {
@@ -609,8 +596,8 @@
         "func": "msg.topic=\"standardDeviation\"\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 550,
-        "y": 480,
+        "x": 490,
+        "y": 660,
         "wires": [
             [
                 "af35f1da.61f24"
@@ -631,11 +618,12 @@
         "parameterFieldType": "msg",
         "stripFunction": false,
         "resultOnly": true,
-        "x": 790,
-        "y": 480,
+        "x": 730,
+        "y": 660,
         "wires": [
             [
-                "bbb5cef2.54b258"
+                "bbb5cef2.54b258",
+                "17f9c909.1b036f"
             ]
         ]
     },
@@ -647,8 +635,8 @@
         "links": [
             "992a4557.f084e8"
         ],
-        "x": 935,
-        "y": 480,
+        "x": 895,
+        "y": 700,
         "wires": []
     },
     {
@@ -657,8 +645,8 @@
         "z": "f00a487a.95faf8",
         "name": "Temperature  (standard deviation)",
         "info": "",
-        "x": 1050,
-        "y": 440,
+        "x": 990,
+        "y": 600,
         "wires": []
     },
     {
@@ -731,7 +719,7 @@
         "blockSize": 0,
         "locked": false,
         "x": 680,
-        "y": 560,
+        "y": 640,
         "wires": [
             [
                 "3aade36.b49949c"
@@ -745,7 +733,7 @@
         "name": "Temperature  (standard deviation)",
         "info": "",
         "x": 350,
-        "y": 520,
+        "y": 600,
         "wires": []
     },
     {
@@ -757,7 +745,7 @@
             "bbb5cef2.54b258"
         ],
         "x": 515,
-        "y": 560,
+        "y": 640,
         "wires": [
             [
                 "8e82f2a9.148e5"
@@ -793,10 +781,11 @@
         "outputs": 1,
         "noerr": 0,
         "x": 940,
-        "y": 480,
+        "y": 520,
         "wires": [
             [
-                "aeedb40b.dd10d"
+                "aeedb40b.dd10d",
+                "dae8b83e.79a9e8"
             ]
         ]
     },
@@ -809,7 +798,7 @@
         "update": true,
         "path": "/temperature/mean",
         "x": 1220,
-        "y": 480,
+        "y": 520,
         "wires": []
     },
     {
@@ -821,10 +810,11 @@
         "outputs": 1,
         "noerr": 0,
         "x": 940,
-        "y": 560,
+        "y": 640,
         "wires": [
             [
-                "310f1a99.6b4ff6"
+                "310f1a99.6b4ff6",
+                "d2dc539a.e21c48"
             ]
         ]
     },
@@ -837,7 +827,7 @@
         "update": true,
         "path": "/temperature/std",
         "x": 1210,
-        "y": 560,
+        "y": 640,
         "wires": []
     },
     {
@@ -865,7 +855,7 @@
         "tosidebar": true,
         "console": false,
         "tostatus": true,
-        "complete": "msg.payload[-1].temperature",
+        "complete": "msg.payload[-1].temperature_avg",
         "targetType": "jsonata",
         "x": 1020,
         "y": 420,
@@ -896,7 +886,7 @@
         "tosidebar": true,
         "console": false,
         "tostatus": true,
-        "complete": "msg.payload[-1].temperature",
+        "complete": "msg.payload[-1].temperature_std",
         "targetType": "jsonata",
         "x": 1020,
         "y": 480,
@@ -915,6 +905,96 @@
         "targetType": "jsonata",
         "x": 1020,
         "y": 360,
+        "wires": []
+    },
+    {
+        "id": "29051e6c.82e832",
+        "type": "debug",
+        "z": "f8d118e1.ddd038",
+        "name": "RAW",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload[0].temperature",
+        "targetType": "msg",
+        "x": 1170,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "dae8b83e.79a9e8",
+        "type": "debug",
+        "z": "f8d118e1.ddd038",
+        "name": "MEAN",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload[0].temperature_avg",
+        "targetType": "msg",
+        "x": 1170,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "d2dc539a.e21c48",
+        "type": "debug",
+        "z": "f8d118e1.ddd038",
+        "name": "STDEV",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload[0].temperature_std",
+        "targetType": "msg",
+        "x": 1180,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "da987e8b.4f0c28",
+        "type": "debug",
+        "z": "f00a487a.95faf8",
+        "name": "RAW",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 870,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "4bc476b1.bb96e",
+        "type": "debug",
+        "z": "f00a487a.95faf8",
+        "name": "MEAN",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 930,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "17f9c909.1b036f",
+        "type": "debug",
+        "z": "f00a487a.95faf8",
+        "name": "STDEV",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 940,
+        "y": 640,
         "wires": []
     }
 ]
