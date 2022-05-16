@@ -678,21 +678,6 @@
         ]
     },
     {
-        "id": "f9877461.76089",
-        "type": "debug",
-        "z": "c6bff353.2ef968",
-        "name": "Last write of raw Temperature",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "msg.payload[-1]",
-        "targetType": "jsonata",
-        "x": 1020,
-        "y": 360,
-        "wires": []
-    },
-    {
         "id": "14b87ec9.4afc29",
         "type": "inject",
         "z": "c6bff353.2ef968",
@@ -700,11 +685,11 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "repeat": "",
+        "repeat": "4",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
-        "x": 320,
+        "x": 330,
         "y": 300,
         "wires": [
             [
@@ -879,8 +864,8 @@
         "active": true,
         "tosidebar": true,
         "console": false,
-        "tostatus": false,
-        "complete": "msg.payload[-1]",
+        "tostatus": true,
+        "complete": "msg.payload[-1].temperature",
         "targetType": "jsonata",
         "x": 1020,
         "y": 420,
@@ -910,11 +895,26 @@
         "active": true,
         "tosidebar": true,
         "console": false,
-        "tostatus": false,
-        "complete": "msg.payload[-1]",
+        "tostatus": true,
+        "complete": "msg.payload[-1].temperature",
         "targetType": "jsonata",
         "x": 1020,
         "y": 480,
+        "wires": []
+    },
+    {
+        "id": "f9877461.76089",
+        "type": "debug",
+        "z": "c6bff353.2ef968",
+        "name": "Last write of raw Temperature",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "msg.payload[-1].temperature",
+        "targetType": "jsonata",
+        "x": 1020,
+        "y": 360,
         "wires": []
     }
 ]
