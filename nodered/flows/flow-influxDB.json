@@ -177,7 +177,9 @@
         "name": "Environment Database",
         "usetls": false,
         "tls": "",
-        "influxdbVersion": "1.x"
+        "influxdbVersion": "1.x",
+        "url": "",
+        "rejectUnauthorized": false
     },
     {
         "id": "e221cd11.84b39",
@@ -189,7 +191,9 @@
         "name": "Environment Database",
         "usetls": false,
         "tls": "",
-        "influxdbVersion": "1.x"
+        "influxdbVersion": "1.x",
+        "url": "",
+        "rejectUnauthorized": false
     },
     {
         "id": "bb270b26.18d878",
@@ -579,6 +583,7 @@
         "precision": "",
         "retentionPolicy": "",
         "database": "",
+        "precisionV18FluxV20": "ns",
         "retentionPolicyV18Flux": "",
         "org": "",
         "bucket": "",

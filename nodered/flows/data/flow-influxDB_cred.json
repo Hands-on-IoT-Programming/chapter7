@@ -1,5 +1,13 @@
 {
     "bb270b26.18d878": {
         "pusherappkeysub": "$(APP_KEY)"
+    },
+    "e221cd11.84b39": {
+        "username": "admin",
+        "password": "raspberry"
+    },
+    "ccc0b64f.610828": {
+        "username": "admin",
+        "password": "raspberry"
     }
 }
